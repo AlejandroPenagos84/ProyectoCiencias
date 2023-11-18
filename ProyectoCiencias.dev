@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=6
+UnitCount=8
 
 [VersionInfo]
 Major=1
@@ -101,7 +101,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit7]
-FileName=Estructuras\Sucursal.h
+FileName=Estructuras\Ciudad.h
 CompileCpp=1
 Folder=Estructuras
 Compile=1
@@ -112,6 +112,16 @@ BuildCmd=
 
 [Unit2]
 FileName=Estructuras\Fecha.h
+CompileCpp=1
+Folder=Estructuras
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit8]
+FileName=Estructuras\Pais.h
 CompileCpp=1
 Folder=Estructuras
 Compile=1
