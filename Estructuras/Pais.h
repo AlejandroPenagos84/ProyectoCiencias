@@ -6,7 +6,7 @@
 
 struct Pais
 {
-    int id;
+    int pk;
     std::string nombre;
     List<Ciudad> ciudades;
 };

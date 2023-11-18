@@ -5,6 +5,9 @@
 #include "Empleado.h"
 
 struct Sucursal{
+    int pk;
+    int fk;
+
     std::string nombre;
     std::string direccion;
     std::string barrio;

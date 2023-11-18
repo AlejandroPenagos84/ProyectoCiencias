@@ -10,7 +10,8 @@
 
 struct Ciudad
 {
-    int id;
+    int pk;
+    int fk;
     std::string nombre;
     List<Sucursal> sucursales;
 };
