@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=14
+UnitCount=13
 
 [VersionInfo]
 Major=1
@@ -61,16 +61,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=Estructuras\Hijo.h
-CompileCpp=1
-Folder=Estructuras
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit4]
 FileName=Estructuras\Empleado.h
 CompileCpp=1
 Folder=Estructuras
@@ -80,7 +70,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit5]
+[Unit4]
 FileName=Estructuras\Sucursal.h
 CompileCpp=1
 Folder=Estructuras
@@ -90,7 +80,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit6]
+[Unit5]
 FileName=Librerias\List.h
 CompileCpp=1
 Folder=Librerias
@@ -100,7 +90,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit7]
+[Unit6]
 FileName=Estructuras\Ciudad.h
 CompileCpp=1
 Folder=Estructuras
@@ -110,17 +100,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit2]
-FileName=Estructuras\Fecha.h
-CompileCpp=1
-Folder=Estructuras
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit8]
+[Unit7]
 FileName=Estructuras\Pais.h
 CompileCpp=1
 Folder=Estructuras
@@ -130,17 +110,17 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit10]
-FileName=Vista\Vista.cpp
+[Unit2]
+FileName=Estructuras\Hijo.h
 CompileCpp=1
-Folder=Vista
+Folder=Estructuras
 Compile=1
 Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit9]
+[Unit8]
 FileName=Vista\Vista.h
 CompileCpp=1
 Folder=Vista
@@ -150,7 +130,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit11]
+[Unit10]
 FileName=Vista\Formulario.h
 CompileCpp=1
 Folder=Vista
@@ -160,10 +140,30 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit12]
-FileName=Vista\Formulario1.cpp
+[Unit9]
+FileName=Vista\Vista.cpp
 CompileCpp=1
 Folder=Vista
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit11]
+FileName=Controlador\Controlador.h
+CompileCpp=1
+Folder=Controlador
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit12]
+FileName=Controlador\Controlador.cpp
+CompileCpp=1
+Folder=Controlador
 Compile=1
 Link=1
 Priority=1000
@@ -181,9 +181,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit13]
-FileName=Controlador\Controlador.h
+FileName=Vista\Formulario.cpp
 CompileCpp=1
-Folder=Controlador
+Folder=Vista
 Compile=1
 Link=1
 Priority=1000
