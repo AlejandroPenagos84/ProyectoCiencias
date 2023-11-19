@@ -10,6 +10,5 @@ int main(int argc, char **argv)
     std::locale::global(std::locale(""));
 	Controlador controlador;
 
-    controlador.MostrarMenu();
 	return 0;
 }
