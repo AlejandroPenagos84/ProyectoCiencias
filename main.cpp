@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Estructuras/Empleado.h"
 #include "Controlador/Controlador.h"
 #include <locale>
 

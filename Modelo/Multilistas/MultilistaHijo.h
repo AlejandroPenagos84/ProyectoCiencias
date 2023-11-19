@@ -1,8 +1,9 @@
 
 #ifndef MULTILISTAHIJO_H
 #define MULTILISTAHIJO_H
-#include "Hijo.h"
-#include "Librerias/Cabecera.h"
+#include "../Estructuras/Hijo.h"
+#include "../Librerias/Cabecera.h"
+#include<string>
 
 class MultilistaHijo {
     private:

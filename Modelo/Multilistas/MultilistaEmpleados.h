@@ -1,8 +1,8 @@
 #ifndef MULTILISTAEMPLEADOS_MULTILISTA_H
 #define MULTILISTAEMPLEADOS_MULTILISTA_H
 #include "Empleado.h"
-#include "Librerias/Arbol.h"
-#include "Librerias/Cabecera.h"
+#include "../Librerias/Arbol.h"
+#include "../Librerias/Cabecera.h"
 
 
 class Multilista {

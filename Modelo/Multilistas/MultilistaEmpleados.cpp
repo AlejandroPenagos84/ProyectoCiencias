@@ -135,10 +135,10 @@ void Multilista::OrganizarPorAtributo(
         int& indiceAtributo,
         int Empleado::*sigAtributo)
 {
-    int indiceC = 0;
+
     if (arbol->findNodo(empleados[posLibre].*atributo) != nullptr)
     {
-        indiceC = cabecera[arbol->findNodo(empleados[posLibre].*atributo)->otroDato].indice;
+        int indiceC = cabecera[arbol->findNodo(empleados[posLibre].*atributo)->otroDato].indice;
         while (empleados[indiceC].*sigAtributo != -1)
             indiceC = empleados[indiceC].*sigAtributo;
         empleados[indiceC].*sigAtributo = posLibre;

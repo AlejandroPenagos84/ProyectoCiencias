@@ -2,8 +2,10 @@
 #define HIJO_H
 
 struct Hijo {
-    std::string nombre;      // Almacena el nombre del hijo.
-    std::string fechaNacimiento;  // Almacena la fecha de nacimiento del hijo, utilizando la estructura Fecha definida en "Fecha.h".
-};
+    std::string nombre;
+    std::string fechaNacimiento;
+    int edad = calcularEdad(obtenerFechaDesdeString(fechaNacimiento));
 
+    int sigEdad{-1};
+};
 #endif //PCIENCIAS_HIJO_H

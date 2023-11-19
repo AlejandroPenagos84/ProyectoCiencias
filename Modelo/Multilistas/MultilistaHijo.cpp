@@ -1,6 +1,6 @@
 #include "MultilistaHijo.h"
-
 #include <utility>
+#include<iostream>
 
 MultilistaHijo::MultilistaHijo(int max) {
     // Inicializar arreglo de hijo
