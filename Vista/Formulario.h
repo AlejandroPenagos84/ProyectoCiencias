@@ -4,7 +4,7 @@
 #include "../Estructuras/Empleado.h"
 #include "../Estructuras/Sucursal.h"
 #include "../Estructuras/Hijo.h"
-#include "../Librerias/List.h"
+
 
 class Formulario
 {

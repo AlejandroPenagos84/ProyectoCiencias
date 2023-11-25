@@ -1,6 +1,6 @@
 #ifndef EMPLEADO_H
 #define EMPLEADO_H
-#include "../Librerias/Edad.h"
+#include "Edad.h"
 #include "../Multilistas/MultilistaHijos/MultilistaHijo.h"
 #include <string>
 

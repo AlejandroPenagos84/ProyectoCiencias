@@ -13,7 +13,7 @@ void Formulario::capturarInfoHijos(Empleado& empleado)
 
         std::cin.ignore(); // Limpiar el buffer del teclado
 
-        empleado.hijos.addLast(hijo);
+        //empleado.hijos.addLast(hijo);
     }
 }
 

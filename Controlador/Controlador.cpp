@@ -1,10 +1,9 @@
 #include "Controlador.h"
-#include "MultilistaPaises.h"
+#include "ControlDAO/ControlDAO.h"
 
 Controlador::Controlador()
 {
-    MultilistaPaises* paises = new MultilistaPaises(21);
-
+    controlDao = new ControlDAO(this);
 }
 
 void Controlador::MostrarMenu()

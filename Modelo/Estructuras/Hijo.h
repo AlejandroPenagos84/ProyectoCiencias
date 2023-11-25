@@ -1,6 +1,6 @@
 #ifndef HIJO_H
 #define HIJO_H
-#include "../Librerias/Edad.h"
+#include "Edad.h"
 #include <string>
 struct Hijo
 {

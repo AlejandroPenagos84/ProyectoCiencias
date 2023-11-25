@@ -47,10 +47,10 @@ void Vista::IngresarDatos()
     std::cin >> numEmpleados;
     std::cin.ignore(); // Limpiar el buffer del teclado
 
-    List<Empleado> empleados;
+    //List<Empleado> empleados;
     for (int i = 0; i < numEmpleados; ++i) {
         std::cout << "\nCapturando información del empleado " << i + 1 << ":\n";
-        empleados.addLast(formulario.capturarInfoEmpleado());
+        //empleados.addLast(formulario.capturarInfoEmpleado());
     }
 
     // Capturar información de sucursales
@@ -59,9 +59,9 @@ void Vista::IngresarDatos()
     std::cin >> numSucursales;
     std::cin.ignore(); // Limpiar el buffer del teclado
 
-    List<Sucursal> sucursales;
+    //List<Sucursal> sucursales;
     for (int i = 0; i < numSucursales; ++i) {
         std::cout << "\nCapturando información de la sucursal " << i + 1 << ":\n";
-        sucursales.addLast(formulario.capturarInformacionSucursal());
+        //sucursales.addLast(formulario.capturarInformacionSucursal());
     }
 }
