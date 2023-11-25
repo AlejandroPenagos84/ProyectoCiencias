@@ -65,3 +65,33 @@ void Vista::IngresarDatos()
         //sucursales.addLast(formulario.capturarInformacionSucursal());
     }
 }
+
+
+void Vista::MenuConsultas()
+{
+    std::cout<<"Consultas"<<std::endl;
+
+    std::cout<<"\t1. Número total de personas que trabajan en una sucursal\n"
+               "clasificados en rangos de edades "<<std::endl;
+
+    std::cout<<"\t2. Listado de los nombres y apellidos de aquellos que tienen  \n"
+               "un número de hijos dado : "<<std::endl;
+
+    std::cout<<"\t3. Nombre y apellidos de las personas que viven en una ciudad dada: "<<std::endl;
+
+    std::cout<<"\t4. Número de sucursales en las que trabaja un número de personas superior a\n"
+               " un número dado"<<std::endl;
+
+    std::cout<<"\t5. Obtener el número de hombres y el número de hombres y mujeres"<<std::endl;
+
+    std::cout<<"\t6. Lista de trabajadores de de edad dada"<<std::endl;
+
+    std::cout<<"\t7. Salir"<<std::endl;
+
+    std::cout<<"Ingresa una opción: ";
+}
+
+void Vista::MenuPrimeraConsulta()
+{
+    
+}

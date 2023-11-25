@@ -46,4 +46,5 @@ add_executable(ProyectoCiencias
         Controlador/ControlDAO/ControlDAO.h
         Controlador/ControlDAO/ControlDAO.cpp
         Modelo/Estructuras/Edad.h
-        Modelo/Estructuras/Edad.h)
+        Modelo/Estructuras/Edad.h
+)

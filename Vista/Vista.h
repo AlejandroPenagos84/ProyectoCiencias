@@ -14,6 +14,9 @@ public:
     int MostrarMenu();
     void IngresarDatos();
     void MenuGlobal();
+    void MenuConsultas();
+
+    void MenuPrimeraConsulta();
 };
 
 #endif

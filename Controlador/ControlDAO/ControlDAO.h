@@ -1,19 +1,20 @@
 #ifndef CONTROLDAO_H
 #define CONTROLDAO_H
 #include "../Controlador.h"
+#include "fstream"
+
 class Controlador;
+
 class ControlDAO {
 private:
     Controlador* control;
+    size_t posLibre;
 
 public:
+
     explicit ControlDAO(Controlador* ctrl);
-};
 
-
-#endif
-/*
- *   // Metodos Para el Archivo de Hijos
+    // Metodos Para el Archivo de Hijos
     void AgregarHijoDAO();
 
     void EliminarHijoDAO();
@@ -60,4 +61,10 @@ public:
 
     // Metodo que se usará para leer y llenar todo el archivo
     void LeerTodoDAO();
+};
+
+
+#endif
+/*
+
  */

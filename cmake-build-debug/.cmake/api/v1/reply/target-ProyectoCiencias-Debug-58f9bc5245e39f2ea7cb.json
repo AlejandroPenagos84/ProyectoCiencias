@@ -232,7 +232,8 @@
 				25,
 				27,
 				29,
-				31
+				31,
+				32
 			]
 		}
 	],
@@ -409,6 +410,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "Modelo/Estructuras/Edad.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Controlador/ControlDAO/Arreglos.h",
 			"sourceGroupIndex" : 1
 		}
 	],

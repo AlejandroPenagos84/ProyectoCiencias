@@ -70,6 +70,7 @@ public:
      * @return La sucursal en la posición especificada.
      */
     Sucursal getSucursal(int indiceArray);
+
 };
 
 #endif
