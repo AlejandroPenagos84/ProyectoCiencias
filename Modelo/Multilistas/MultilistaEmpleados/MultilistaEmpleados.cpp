@@ -3,8 +3,12 @@
 #include <utility>
 
 /**
- * En este constructor se inicializa todo, las cabeceras, los arboles y demás
- * @param max Tamaño maximo de los arreglos
+ * @brief Constructor de la clase MultilistaEmpleados.
+ *
+ * Este constructor inicializa los arreglos, cabeceras y árboles necesarios
+ * para la organización de empleados en la multilista.
+ *
+ * @param max Tamaño máximo de los arreglos.
  */
 MultilistaEmpleados::MultilistaEmpleados(int max) {
     // Se inicializa el arreglo que va contener los empleados
@@ -36,7 +40,6 @@ MultilistaEmpleados::MultilistaEmpleados(int max) {
     CSexo[0] = {'M', -1};
     CSexo[1] = {'F', -1};
 
-
     //Cabecera para organizar los atributos que tengan string
     CActividadLaboral[0] = {"", -1};
     CCiudadNacimiento[0] = {"", -1};
@@ -66,14 +69,27 @@ MultilistaEmpleados::MultilistaEmpleados(int max) {
 }
 
 /**
- * Aqui se agrega un empleado a lista e invoco todos los metodo privados para organizar los datos
- * @param empleado Empleado
+ * @brief Agrega un empleado a la multilista e invoca los métodos privados para organizar los datos.
+ *
+ * @param nombre Nombre del empleado.
+ * @param apellido Apellido del empleado.
+ * @param tipoIdentificacion Tipo de identificación del empleado.
+ * @param numIdentificacion Número de identificación del empleado.
+ * @param sexo Género del empleado.
+ * @param telefonoCelular Número de teléfono celular del empleado.
+ * @param telefonoFijo Número de teléfono fijo del empleado.
+ * @param email Correo electrónico del empleado.
+ * @param ciudadNacimiento Ciudad de nacimiento del empleado.
+ * @param paisNacimiento País de nacimiento del empleado.
+ * @param ciudadResidencia Ciudad de residencia del empleado.
+ * @param direccion Dirección del empleado.
+ * @param tieneHijos Indicador de si el empleado tiene hijos.
+ * @param actividadLaboral Actividad laboral del empleado.
+ * @param sucursalTrabajo Sucursal de trabajo del empleado.
+ * @param barrio Barrio de residencia del empleado.
+ * @param numHijos Número de hijos del empleado.
+ * @param fechaNacimiento Fecha de nacimiento del empleado.
  */
-
-// La razon por la que tiene tanto parametro es para respetar la ley de demeter
-// y poder implementarlo con el patron DAO, para los archivos, hice algo parecido
-// para un programa con chile de programacion avanzada, ahi lo que haria seria una inyeccion de
-// dependencias para llenar esa multilista
 void MultilistaEmpleados::AgregarEmpleado(
         std::string nombre,
         std::string apellido,
@@ -117,7 +133,6 @@ void MultilistaEmpleados::AgregarEmpleado(
     empleado.hijos = new MultilistaHijo(numHijos);
     empleados[posLibre] = std::move(empleado);
 
-
     //Organizar Por Sexo
     OrganizarSexo(posLibre);
 
@@ -146,7 +161,6 @@ void MultilistaEmpleados::AgregarEmpleado(
                 &Empleado::sigBarrio,
                 posLibre);
 
-
     //Organizar Por nombre De Sucursales
     Reorganizar(arbolSucursales,
                 CSucursal,
@@ -167,18 +181,32 @@ void MultilistaEmpleados::AgregarEmpleado(
                        &Empleado::sigEdad,
                        getCabeceraEdad(posLibre));
 
-
     posLibre++;
     size++;
 }
 
-//Metodo de eliminar
+/**
+ * @brief Elimina un empleado de la multilista.
+ *
+ * Este método marca el estado del empleado en la posición indicada como falso,
+ * indicando que ha sido eliminado de la multilista.
+ *
+ * @param indiceArray Índice del empleado en el arreglo.
+ */
 void MultilistaEmpleados::Eliminar(int indiceArray) {
     empleados[indiceArray].estado = false;
     size--;
 }
 
-//getters
+/**
+ * @brief Obtiene el índice de la cabecera correspondiente al número de hijos de un empleado.
+ *
+ * Este método calcula el índice de la cabecera en la que debe ubicarse el empleado
+ * en función de la cantidad de hijos que tenga.
+ *
+ * @param indiceArray Índice del empleado en el arreglo.
+ * @return Índice de la cabecera correspondiente.
+ */
 int MultilistaEmpleados::getCabeceraNumHijos(int indiceArray) {
     int numHijos = empleados[indiceArray].numHijos;
     int indiceCabecera;
@@ -192,10 +220,18 @@ int MultilistaEmpleados::getCabeceraNumHijos(int indiceArray) {
     else
         indiceCabecera = 3;
 
-
     return indiceCabecera;
 }
 
+/**
+ * @brief Obtiene el índice de la cabecera correspondiente a la edad de un empleado.
+ *
+ * Este método calcula el índice de la cabecera en la que debe ubicarse el empleado
+ * en función de su edad.
+ *
+ * @param indiceArray Índice del empleado en el arreglo.
+ * @return Índice de la cabecera correspondiente.
+ */
 int MultilistaEmpleados::getCabeceraEdad(int indiceArray) {
     int edad = empleados[indiceArray].edad;
     int indiceCabecera;
@@ -214,4 +250,19 @@ int MultilistaEmpleados::getCabeceraEdad(int indiceArray) {
     return indiceCabecera;
 }
 
+/**
+ * @brief Obtiene el número total de empleados en la multilista.
+ *
+ * @return Número total de empleados en la multilista.
+ */
 int MultilistaEmpleados::getNumEmpleados() const { return size; }
+
+/**
+ * @brief Obtiene el objeto Empleado en la posición indicada del arreglo.
+ *
+ * @param indiceArray Índice del empleado en el arreglo.
+ * @return Objeto Empleado en la posición indicada.
+ */
+Empleado MultilistaEmpleados::getEmpleado(int indiceArray) {
+    return empleados[indiceArray];
+}

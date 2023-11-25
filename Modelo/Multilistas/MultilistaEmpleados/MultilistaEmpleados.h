@@ -6,9 +6,9 @@
 
 class MultilistaEmpleados {
 private:
-    Empleado *empleados;
+    Empleado *empleados;  // Arreglo de empleados
 
-    // Arreglos de Cabeceras
+    // Arreglos de Cabeceras para diferentes atributos
     Cabecera<char> *CSexo;
     Cabecera<std::string> *CActividadLaboral;
     Cabecera<std::string> *CCiudadNacimiento;
@@ -17,7 +17,7 @@ private:
     Cabecera<std::string> *CNumeroHijos;
     Cabecera<std::string> *CEdad;
 
-    // PosicionLibre
+    // PosicionLibre para rastrear la siguiente posición disponible en el arreglo de empleados
     int posLibre;
 
     // Indices de las cabeceras donde se manejan datos tipo string
@@ -26,33 +26,46 @@ private:
     int indiceBarrio;
     int indiceSucursal;
 
-    // Size
+    // Size para mantener el número actual de empleados
     int size;
-    // Arboles para los datos tipo string, estos arboles sirven para que en caso
-    // de que alguna de los arreglos de cabecera se largo, la busqueda sea optima,
-    // en caso de que toque agregar otro elemento a la cabecera o buscar uno que
-    // ya se encuentre
 
-    //(Siento que se gasta mas memoria pero asi es más optimo en caso de que las
-    //cabecera se vuelvan
-    // muy grandes)
-
-    // Aunque ni tanto, pq si solo se agrega un dato a la cabecera, se usará un
-    // solo nodo del arbol :v
+    // Arboles para los datos tipo string, estos arboles sirven para optimizar búsquedas
+    // en caso de que alguna de las listas de cabeceras se vuelva larga
     RBTree<std::string, int> *arbolActividad;
     RBTree<std::string, int> *arbolCiudadNacimiento;
     RBTree<std::string, int> *arbolBarrio;
     RBTree<std::string, int> *arbolSucursales;
 
 public:
-    // Estos son los método publicos, quiza lo haga mas tarde u otro dia, pero
-    // tratare de hacer el imprimir mas generico o en caso de que sea necesario
-    // entregar una cola o pila o lista, sobretodo al momento de buscar, asi se
-    // hará mas chevere y sencillo para las consultas
+    /**
+     * @brief Constructor de la clase MultilistaEmpleados.
+     *
+     * @param max Número máximo de empleados que puede manejar la multilista.
+     */
+    explicit MultilistaEmpleados(int max);
 
-    explicit MultilistaEmpleados(int);
-
-    //Metodo para agregar un empleado
+    /**
+     * @brief Método para agregar un nuevo empleado a la multilista.
+     *
+     * @param nombre Nombre del empleado.
+     * @param apellido Apellido del empleado.
+     * @param tipoIdentificacion Tipo de identificación del empleado.
+     * @param numIdentificacion Número de identificación del empleado.
+     * @param sexo Género del empleado.
+     * @param telefonoCelular Número de teléfono celular del empleado.
+     * @param telefonoFijo Número de teléfono fijo del empleado.
+     * @param email Dirección de correo electrónico del empleado.
+     * @param ciudadNacimiento Ciudad de nacimiento del empleado.
+     * @param paisNacimiento País de nacimiento del empleado.
+     * @param ciudadResidencia Ciudad de residencia actual del empleado.
+     * @param direccion Dirección del empleado.
+     * @param tieneHijos Indica si el empleado tiene hijos o no.
+     * @param actividadLaboral Actividad laboral del empleado.
+     * @param sucursalTrabajo Sucursal donde trabaja el empleado.
+     * @param barrio Barrio de residencia del empleado.
+     * @param numHijos Número de hijos del empleado.
+     * @param fechaNacimiento Fecha de nacimiento del empleado.
+     */
     void AgregarEmpleado(std::string nombre,
                          std::string apellido,
                          std::string tipoIdentificacion,
@@ -73,30 +86,106 @@ public:
                          std::string fechaNacimiento);
 
 
-    //Metodos para modificar atributos de un empleado
-    void ModificarAtributo(int,  std::string &, int);
-    void ModificarCategoria(int num, int valor, int indice);
-    void ModificarS(int num,int indice, std::string nuevoDato);
-    void ModificarC(int num,int indice, char nuevoDato);
+    /**
+     * @brief Método para modificar atributos específicos de un empleado.
+     *
+     * @param num Número que indica el tipo de atributo a modificar.
+     * @param nuevoDato Nuevo valor del atributo.
+     * @param indice Índice del empleado en el arreglo.
+     */
+    void ModificarAtributo(int num, std::string &nuevoDato, int indice);
 
-    //Metodo para obtener el tamaño del arreglo
+    /**
+     * @brief Método para modificar la categoría de un atributo específico de un empleado.
+     *
+     * @param num Número que indica el tipo de atributo a modificar.
+     * @param valor Nuevo valor para el atributo.
+     * @param indice Índice del empleado en el arreglo.
+     */
+    void ModificarCategoria(int num, int valor, int indice);
+
+    /**
+     * @brief Método para modificar atributos de tipo string de un empleado.
+     *
+     * @param num Número que indica el tipo de atributo a modificar.
+     * @param indice Índice del empleado en el arreglo.
+     * @param nuevoDato Nuevo valor del atributo.
+     */
+    void ModificarS(int num, int indice, std::string nuevoDato);
+
+    /**
+     * @brief Método para modificar atributos de tipo char de un empleado.
+     *
+     * @param num Número que indica el tipo de atributo a modificar.
+     * @param indice Índice del empleado en el arreglo.
+     * @param nuevoDato Nuevo valor del atributo.
+     */
+    void ModificarC(int num, int indice, char nuevoDato);
+
+    /**
+     * @brief Método para obtener el tamaño actual del arreglo de empleados.
+     *
+     * @return Tamaño del arreglo de empleados.
+     */
     int getNumEmpleados() const;
 
-    //Metodos para imprimir datos
-    void ImprimirSexo(char);
-    void ImprimirActividad(std::string);
-    void ImprimirEmpleadosPorNumHijos(int, int);
+    /**
+     * @brief Método para imprimir empleados según su género.
+     *
+     * @param sexo Género de los empleados a imprimir.
+     */
+    void ImprimirSexo(char sexo);
 
-    //Metodo para eliminar dato
+    /**
+     * @brief Método para imprimir empleados según su actividad laboral.
+     *
+     * @param actividad Actividad laboral de los empleados a imprimir.
+     */
+    void ImprimirActividad(std::string actividad);
+
+    /**
+     * @brief Método para imprimir empleados según el número de hijos en un rango específico.
+     *
+     * @param min Número mínimo de hijos.
+     * @param max Número máximo de hijos.
+     */
+    void ImprimirEmpleadosPorNumHijos(int min, int max);
+
+    /**
+     * @brief Método para eliminar un empleado del arreglo.
+     *
+     * @param indiceArray Índice del empleado en el arreglo.
+     */
     void Eliminar(int indiceArray);
 
-private:
-    // Estos son los métodos privado con los que organizo la informacion en la
-    // multilista
+    /**
+     * @brief Getter para obtener un empleado del arreglo.
+     *
+     * @param indiceArray Índice del empleado en el arreglo.
+     * @return Objeto Empleado correspondiente al índice.
+     */
+    Empleado getEmpleado(int indiceArray);
 
-    // Método Simples con los que se organizarán los datos
+private:
+    // Métodos privados para organizar y cambiar atributos en la multilista
+
+    /**
+     * @brief Método para organizar un empleado según su género.
+     *
+     * @param indiceArrayEmpleado Índice del empleado en el arreglo.
+     */
     void OrganizarSexo(int indiceArrayEmpleado);
 
+    /**
+     * @brief Método para reorganizar un empleado en la lista de cabeceras.
+     *
+     * @param arbol Arbol del atributo.
+     * @param cabecera Cabecera del atributo.
+     * @param atributo Puntero al atributo.
+     * @param indiceAtributo Índice del atributo.
+     * @param siguienteAtributo Puntero al siguiente índice.
+     * @param indiceArray Índice del empleado en el arreglo.
+     */
     void Reorganizar(RBTree<std::string, int> *&arbol,
                      Cabecera<std::string> *&cabecera,
                      std::string Empleado::*atributo,
@@ -104,37 +193,91 @@ private:
                      int Empleado::*siguienteAtributo,
                      int indiceArray);
 
+    /**
+     * @brief Método para organizar un empleado según una categoría específica.
+     *
+     * @param cabecera Cabecera del atributo.
+     * @param indiceArray Índice del empleado en el arreglo.
+     * @param siguienteIndice Puntero al siguiente índice del atributo.
+     * @param indiceCabecera Índice de la cabecera.
+     */
     void OrganizarCategoria(Cabecera<std::string> *&cabecera,
                             int indiceArray,
                             int Empleado::*siguienteIndice,
                             int indiceCabecera);
 
-    // Metodos para cambiar un atributo, se usa para poder reubicarlo en la lista de cabeceras
-    void CambiarAtributo(
-            RBTree<std::string, int> *&arbol,// Arbol del atributo
-            std::string Empleado::*atributo, // Puntero al atributo
-            std::string nuevoValor,          // Valor del nuevo atributo
-            int Empleado::*siguienteIndice,  // Puntero al siguiente índice
-            Cabecera<std::string> *&cabecera,// Cabecera
-            int indiceArrayEmpleado,         // Posición del empleado en el array
-            int indiceCabecera,              // Índice de la cabecera
-            int &nuevoAtributoIndice);       // Índice que hace referencia a los índices de las
-                                             //cabecera
-    void CambiarCategoria(
-            Cabecera<std::string> *&cabecera,//Cabecera del atributo
-            int Empleado::*atributo,         //Atributo que se cambiará
-            int valor,
-            int Empleado::*siguienteIndice,// Indice del atributo que se cambiará
-            int indiceArray,
-            int indiceCabeceraAntigua,
-            int (MultilistaEmpleados::*getCabecera)(int));
+    /**
+     * @brief Método para cambiar un atributo específico de un empleado.
+     *
+     * @param arbol Arbol del atributo.
+     * @param atributo Puntero al atributo.
+     * @param nuevoValor Nuevo valor del atributo.
+     * @param siguienteIndice Puntero al siguiente índice del atributo.
+     * @param cabecera Cabecera del atributo.
+     * @param indiceArrayEmpleado Índice del empleado en el arreglo.
+     * @param indiceCabecera Índice de la cabecera.
+     * @param nuevoAtributoIndice Índice que hace referencia a los índices de las cabeceras.
+     */
+    void CambiarAtributo(RBTree<std::string, int> *&arbol,
+                         std::string Empleado::*atributo,
+                         std::string nuevoValor,
+                         int Empleado::*siguienteIndice,
+                         Cabecera<std::string> *&cabecera,
+                         int indiceArrayEmpleado,
+                         int indiceCabecera,
+                         int &nuevoAtributoIndice);
 
-    //Tambien hace de la parte de los metodos de cambiar, solo cambian el atributo
+    /**
+     * @brief Método para cambiar la categoría de un atributo específico de un empleado.
+     *
+     * @param cabecera Cabecera del atributo.
+     * @param atributo Puntero al atributo.
+     * @param valor Nuevo valor para el atributo.
+     * @param siguienteIndice Puntero al siguiente índice del atributo.
+     * @param indiceArray Índice del empleado en el arreglo.
+     * @param indiceCabeceraAntigua Índice de la cabecera antigua.
+     * @param getCabecera Función para obtener la nueva cabecera.
+     */
+    void CambiarCategoria(Cabecera<std::string> *&cabecera,
+                          int Empleado::*atributo,
+                          int valor,
+                          int Empleado::*siguienteIndice,
+                          int indiceArray,
+                          int indiceCabeceraAntigua,
+                          int (MultilistaEmpleados::*getCabecera)(int));
+
+    /**
+     * @brief Método para cambiar atributos de tipo string de un empleado.
+     *
+     * @param atributo Puntero al atributo.
+     * @param indiceArray Índice del empleado en el arreglo.
+     * @param nuevoDato Nuevo valor del atributo.
+     */
     void CambiarS(std::string Empleado::*atributo, int indiceArray, std::string nuevoDato);
-    void CambiarC(char  Empleado::*atributo, int indiceArray, char nuevoDato);
 
-    //Getters que permiten generalizar la obtencion del indice de la cabecera según un rango dado
+    /**
+     * @brief Método para cambiar atributos de tipo char de un empleado.
+     *
+     * @param atributo Puntero al atributo.
+     * @param indiceArray Índice del empleado en el arreglo.
+     * @param nuevoDato Nuevo valor del atributo.
+     */
+    void CambiarC(char Empleado::*atributo, int indiceArray, char nuevoDato);
+
+    /**
+     * @brief Getter para obtener la cabecera correspondiente según el número de hijos.
+     *
+     * @param indiceArray Índice del empleado en el arreglo.
+     * @return Índice de la cabecera.
+     */
     int getCabeceraNumHijos(int indiceArray);
+
+    /**
+     * @brief Getter para obtener la cabecera correspondiente según la edad.
+     *
+     * @param indiceArray Índice del empleado en el arreglo.
+     * @return Índice de la cabecera.
+     */
     int getCabeceraEdad(int indiceArray);
 };
 

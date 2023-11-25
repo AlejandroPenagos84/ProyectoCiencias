@@ -1,19 +1,17 @@
 #include "MultilistaEmpleados.h"
 
-//Metodos publicos que implementan los metodos de cambiar
+// Métodos públicos que implementan los métodos de cambiar
+
 /**
- * Metodo publico donde se modifica un atributo de los string
- * @param num
- * @param nuevoDato
- * @param indice
+ * @brief Modifica un atributo de tipo string de un empleado en la multilista.
+ *
+ * @param num Número que identifica el atributo a modificar.
+ * @param nuevoDato Nuevo valor para el atributo.
+ * @param indice Índice del empleado en el arreglo.
  */
-void MultilistaEmpleados::ModificarAtributo(int num,
-                                            std::string &nuevoDato,
-                                            int indice) {
-
+void MultilistaEmpleados::ModificarAtributo(int num, std::string &nuevoDato, int indice) {
     switch (num) {
-
-        case 1:// 1 Actividad Laboral
+        case 1: // 1 Actividad Laboral
             CambiarAtributo(arbolActividad,
                             &Empleado::actividadLaboral,
                             nuevoDato,
@@ -24,7 +22,7 @@ void MultilistaEmpleados::ModificarAtributo(int num,
                             indiceActividadLaboral);
             break;
 
-        case 2:// 2 Ciudad Nacimiento
+        case 2: // 2 Ciudad Nacimiento
             CambiarAtributo(arbolCiudadNacimiento,
                             &Empleado::ciudadNacimiento,
                             nuevoDato,
@@ -35,7 +33,7 @@ void MultilistaEmpleados::ModificarAtributo(int num,
                             indiceCiudadNacimiento);
             break;
 
-        case 3:// 3 Barrio
+        case 3: // 3 Barrio
             CambiarAtributo(arbolBarrio, &Empleado::barrio,
                             nuevoDato,
                             &Empleado::sigBarrio,
@@ -44,7 +42,7 @@ void MultilistaEmpleados::ModificarAtributo(int num,
                             indiceBarrio);
             break;
 
-        case 4:// 4 Sucursales
+        case 4: // 4 Sucursales
             CambiarAtributo(arbolSucursales,
                             &Empleado::sucursalTrabajo,
                             nuevoDato,
@@ -53,17 +51,19 @@ void MultilistaEmpleados::ModificarAtributo(int num,
                             indice,
                             arbolSucursales->findNodo(empleados[indice].sucursalTrabajo)->otroDato,
                             indiceSucursal);
+            break;
 
-        default:// En caso de que se ingrese otro numero
+        default: // En caso de que se ingrese otro número
             break;
     }
 }
 
 /**
- * Metodo publico donde se modifica un atributo de las categorias
- * @param num
- * @param valor
- * @param indice
+ * @brief Modifica un atributo de las categorías de un empleado en la multilista.
+ *
+ * @param num Número que identifica la categoría a modificar.
+ * @param valor Nuevo valor para la categoría.
+ * @param indice Índice del empleado en el arreglo.
  */
 void MultilistaEmpleados::ModificarCategoria(int num, int valor, int indice) {
     switch (num) {
@@ -93,54 +93,53 @@ void MultilistaEmpleados::ModificarCategoria(int num, int valor, int indice) {
 }
 
 /**
- * Metodo para modificar todos los valores que no tengan String y que además no hagan
- * parte de alguna cabecera
- * @param num
- * @param indice
- * @param nuevoDato
+ * @brief Modifica atributos de tipo string que no son parte de una cabecera en la multilista.
+ *
+ * @param num Número que identifica el atributo a modificar.
+ * @param indice Índice del empleado en el arreglo.
+ * @param nuevoDato Nuevo valor para el atributo.
  */
-void MultilistaEmpleados::ModificarS(int num, int indice, std::string nuevoDato)
-{
+void MultilistaEmpleados::ModificarS(int num, int indice, std::string nuevoDato) {
     switch (num) {
         case 1:
-            CambiarS(&Empleado::nombre,indice,std::move(nuevoDato));
+            CambiarS(&Empleado::nombre, indice, std::move(nuevoDato));
             break;
 
         case 2:
-            CambiarS(&Empleado::apellido,indice,std::move(nuevoDato));
+            CambiarS(&Empleado::apellido, indice, std::move(nuevoDato));
             break;
 
         case 3:
-            CambiarS(&Empleado::tipoIdentificacion,indice,std::move(nuevoDato));
+            CambiarS(&Empleado::tipoIdentificacion, indice, std::move(nuevoDato));
             break;
 
         case 4:
-            CambiarS(&Empleado::numIdentificacion,indice,std::move(nuevoDato));
+            CambiarS(&Empleado::numIdentificacion, indice, std::move(nuevoDato));
             break;
 
         case 5:
-            CambiarS(&Empleado::telefonoCelular,indice,std::move(nuevoDato));
+            CambiarS(&Empleado::telefonoCelular, indice, std::move(nuevoDato));
             break;
 
         case 6:
-            CambiarS(&Empleado::telefonoFijo,indice,std::move(nuevoDato));
+            CambiarS(&Empleado::telefonoFijo, indice, std::move(nuevoDato));
             break;
 
         case 7:
-            CambiarS(&Empleado::email,indice,std::move(nuevoDato));
+            CambiarS(&Empleado::email, indice, std::move(nuevoDato));
             break;
 
         case 8:
-            CambiarS(&Empleado::paisNacimiento,indice,std::move(nuevoDato));
+            CambiarS(&Empleado::paisNacimiento, indice, std::move(nuevoDato));
             break;
 
         case 9:
-            CambiarS(&Empleado::ciudadResidencia,indice,std::move(nuevoDato));
+            CambiarS(&Empleado::ciudadResidencia, indice, std::move(nuevoDato));
             break;
 
         case 10:
-            CambiarS(&Empleado::direccion,indice,std::move(nuevoDato));
-            // Procesar direccion
+            CambiarS(&Empleado::direccion, indice, std::move(nuevoDato));
+            // Procesar dirección
             break;
 
         default:
@@ -150,10 +149,11 @@ void MultilistaEmpleados::ModificarS(int num, int indice, std::string nuevoDato)
 }
 
 /**
- * Metodo para eliminar los valores char
- * @param num
- * @param indice
- * @param nuevoDato
+ * @brief Elimina los valores de tipo char de un empleado en la multilista.
+ *
+ * @param num Número que identifica el atributo a modificar.
+ * @param indice Índice del empleado en el arreglo.
+ * @param nuevoDato Nuevo valor para el atributo.
  */
 void MultilistaEmpleados::ModificarC(int num, int indice, char nuevoDato) {
     switch (num) {
@@ -169,53 +169,53 @@ void MultilistaEmpleados::ModificarC(int num, int indice, char nuevoDato) {
     }
 }
 
+// Métodos privados con los que cambio los atributos
 
-
-// Metodo privados con los que cambio los atributos
 /**
- * Metodo para cambiar un atributo especifico tipo string
- * @param atributo
- * @param indiceArray
- * @param nuevoDato
+ * @brief Cambia un atributo de tipo string de un empleado en la multilista.
+ *
+ * @param atributo Puntero al atributo de tipo string.
+ * @param indiceArray Índice del empleado en el arreglo.
+ * @param nuevoDato Nuevo valor para el atributo.
  */
-void MultilistaEmpleados::CambiarS(std::string Empleado::*atributo, int indiceArray, std::string nuevoDato)
-{
+void MultilistaEmpleados::CambiarS(std::string Empleado::*atributo, int indiceArray, std::string nuevoDato) {
     empleados[indiceArray].*atributo = std::move(nuevoDato);
 }
 
 /**
- * Metodo para cambiar un atributo especifico tipo char
- * @param atributo
- * @param indiceArray
- * @param nuevoDato
+ * @brief Cambia un atributo de tipo char de un empleado en la multilista.
+ *
+ * @param atributo Puntero al atributo de tipo char.
+ * @param indiceArray Índice del empleado en el arreglo.
+ * @param nuevoDato Nuevo valor para el atributo.
  */
-void MultilistaEmpleados::CambiarC(char Empleado::*atributo, int indiceArray, char nuevoDato)
-{
+void MultilistaEmpleados::CambiarC(char Empleado::*atributo, int indiceArray, char nuevoDato) {
     empleados[indiceArray].*atributo = nuevoDato;
 }
 
 /**
- * Metodo para cambiar un atributo y reubicarlo en la lista de cabeceras
- * Este metodo es para los datos tipo string, donde no existe un rango
- * @param arbol
- * @param atributo
- * @param nuevoValor
- * @param siguienteIndice
- * @param cabecera
- * @param indiceArrayEmpleado
- * @param indiceCabecera
- * @param nuevoAtributoIndice
+ * @brief Cambia un atributo y lo reubica en la lista de cabeceras.
+ *
+ * Este método es para los datos tipo string, donde no existe un rango.
+ *
+ * @param arbol Arbol del atributo.
+ * @param atributo Puntero al atributo.
+ * @param nuevoValor Nuevo valor para el atributo.
+ * @param siguienteIndice Puntero al siguiente índice.
+ * @param cabecera Cabecera.
+ * @param indiceArrayEmpleado Posición del empleado en el array.
+ * @param indiceCabecera Índice de la cabecera.
+ * @param nuevoAtributoIndice Índice que hace referencia a los índices de las cabeceras.
  */
 void MultilistaEmpleados::CambiarAtributo(
-        RBTree<std::string, int> *&arbol,// Arbol del atributo
-        std::string Empleado::*atributo, // Puntero al atributo
-        std::string nuevoValor,          // Valor del nuevo atributo
-        int Empleado::*siguienteIndice,  // Puntero al siguiente índice
-        Cabecera<std::string> *&cabecera,// Cabecera
-        int indiceArrayEmpleado,         // Posición del empleado en el array
-        int indiceCabecera,              // Índice de la cabecera
-        int &nuevoAtributoIndice         // Índice que hace referencia a los índices de las
-                                         // cabeceras
+        RBTree<std::string, int> *&arbol,
+        std::string Empleado::*atributo,
+        std::string nuevoValor,
+        int Empleado::*siguienteIndice,
+        Cabecera<std::string> *&cabecera,
+        int indiceArrayEmpleado,
+        int indiceCabecera,
+        int &nuevoAtributoIndice
 ) {
     int indiceAnterior;
     int indiceSiguiente;
@@ -224,25 +224,29 @@ void MultilistaEmpleados::CambiarAtributo(
     indiceAnterior = indiceArreglo;
     indiceSiguiente = empleados[indiceArreglo].*siguienteIndice;
 
+    // Encuentra la posición del empleado en el arreglo
     while (indiceArreglo != indiceArrayEmpleado) {
         indiceAnterior = indiceArreglo;
         indiceArreglo = empleados[indiceArreglo].*siguienteIndice;
         indiceSiguiente = empleados[indiceArreglo].*siguienteIndice;
     }
 
-
+    // Cambia el valor del atributo
     empleados[indiceArrayEmpleado].*atributo = std::move(nuevoValor);
 
+    // Actualiza los punteros en la lista de cabeceras
     if (indiceArreglo == cabecera[indiceCabecera].indice)
         cabecera[indiceCabecera].indice = indiceSiguiente;
     else
         empleados[indiceAnterior].*siguienteIndice = indiceSiguiente;
 
+    // Si la cabecera está vacía, actualiza el índice de la cabecera y el atributo
     if (cabecera[indiceCabecera].indice == -1) {
         nuevoAtributoIndice--;
         cabecera[indiceCabecera].atributo = "";
     }
 
+    // Reorganiza el árbol después del cambio
     Reorganizar(arbol,
                 cabecera,
                 atributo,
@@ -252,23 +256,27 @@ void MultilistaEmpleados::CambiarAtributo(
 }
 
 /**
-* Metodo para cambiar un atributo y reubicarlo en la lista de cabeceras
-* Este metodo es para los datos tipo string, donde ya existe un rango
- * @param cabecera
- * @param atributo
- * @param valor
- * @param siguienteIndice
- * @param indiceArray
- * @param indiceCabeceraAntigua
- * @param getCabecera
+ * @brief Cambia un atributo y lo reubica en la lista de cabeceras.
+ *
+ * Este método es para los datos tipo string, donde ya existe un rango.
+ *
+ * @param cabecera Cabecera.
+ * @param atributo Puntero al atributo.
+ * @param valor Nuevo valor para el atributo.
+ * @param siguienteIndice Puntero al siguiente índice.
+ * @param indiceArray Posición del empleado en el array.
+ * @param indiceCabeceraAntigua Índice de la cabecera antigua.
+ * @param getCabecera Función para obtener la nueva cabecera.
  */
-void MultilistaEmpleados::CambiarCategoria(Cabecera<std::string> *&cabecera,
-                                           int Empleado::*atributo,
-                                           int valor,
-                                           int Empleado::*siguienteIndice,
-                                           int indiceArray,
-                                           int indiceCabeceraAntigua,
-                                           int (MultilistaEmpleados::*getCabecera)(int)) {
+void MultilistaEmpleados::CambiarCategoria(
+        Cabecera<std::string> *&cabecera,
+        int Empleado::*atributo,
+        int valor,
+        int Empleado::*siguienteIndice,
+        int indiceArray,
+        int indiceCabeceraAntigua,
+        int (MultilistaEmpleados::*getCabecera)(int)
+) {
     int indiceAnterior;
     int indiceSiguiente;
     int indiceArreglo = cabecera[indiceCabeceraAntigua].indice;
@@ -276,20 +284,24 @@ void MultilistaEmpleados::CambiarCategoria(Cabecera<std::string> *&cabecera,
     indiceAnterior = indiceArreglo;
     indiceSiguiente = empleados[indiceArreglo].*siguienteIndice;
 
+    // Encuentra la posición del empleado en el arreglo
     while (indiceArreglo != indiceArray) {
         indiceAnterior = indiceArreglo;
         indiceArreglo = empleados[indiceArreglo].*siguienteIndice;
         indiceSiguiente = empleados[indiceArreglo].*siguienteIndice;
     }
 
+    // Cambia el valor del atributo
     empleados[indiceArray].*atributo = valor;
 
+    // Actualiza los punteros en la lista de cabeceras
     if (indiceArreglo == cabecera[indiceCabeceraAntigua].indice)
         cabecera[indiceCabeceraAntigua].indice = indiceSiguiente;
     else {
         empleados[indiceArreglo].*siguienteIndice = indiceSiguiente;
     }
 
+    // Organiza la nueva categoría después del cambio
     OrganizarCategoria(cabecera,
                        indiceArray,
                        siguienteIndice,

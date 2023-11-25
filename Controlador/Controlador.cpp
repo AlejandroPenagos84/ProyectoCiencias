@@ -1,7 +1,10 @@
 #include "Controlador.h"
-#include <cstdlib>
+#include "MultilistaPaises.h"
+
 Controlador::Controlador()
 {
+    MultilistaPaises* paises = new MultilistaPaises(21);
+
 }
 
 void Controlador::MostrarMenu()

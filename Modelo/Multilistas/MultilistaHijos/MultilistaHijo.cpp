@@ -3,6 +3,15 @@
 #include <utility>
 
 MultilistaHijo::MultilistaHijo(int max) {
+    /**
+     * @brief Constructor de la clase.
+     *
+     * Inicializa el arreglo de hijos, la cabecera de edades, la posición libre, el tamaño
+     * y la cabecera de edades inicial.
+     *
+     * @param max Tamaño máximo del arreglo de hijos.
+     */
+
     // Inicializar arreglo de hijo
     hijos = new Hijo[max];
 
@@ -15,7 +24,7 @@ MultilistaHijo::MultilistaHijo(int max) {
     //size
     size = 0;
 
-    // Incializar Cabecera de esades
+    // Incializar Cabecera de edades
     CEdad[0] = {"0 a 5", -1};
     CEdad[1] = {"6 a 10", -1};
     CEdad[2] = {"11 a 18", -1};
@@ -23,8 +32,14 @@ MultilistaHijo::MultilistaHijo(int max) {
 }
 
 void MultilistaHijo::AgregarHijo(std::string nombre, std::string fechaNacimiento) {
+    /**
+     * @brief Agrega un hijo a la multilista.
+     *
+     * @param nombre Nombre del hijo.
+     * @param fechaNacimiento Fecha de nacimiento del hijo.
+     */
 
-    Hijo hijo(std::move(nombre),std::move(fechaNacimiento));
+    Hijo hijo(std::move(nombre), std::move(fechaNacimiento));
 
     hijos[posLibre] = std::move(hijo);
     OrganizarCategoria(CEdad,
@@ -36,6 +51,14 @@ void MultilistaHijo::AgregarHijo(std::string nombre, std::string fechaNacimiento
 }
 
 void MultilistaHijo::ModificarCategoria(int num, int valor, int indice) {
+    /**
+     * @brief Modifica la categoría de un hijo en la multilista.
+     *
+     * @param num Número de la categoría a modificar.
+     * @param valor Nuevo valor para la categoría.
+     * @param indice Índice en el arreglo de hijos a modificar.
+     */
+
     if (num == 1) {
         CambiarCategoria(CEdad,
                          &Hijo::edad,
@@ -51,17 +74,30 @@ void MultilistaHijo::OrganizarCategoria(Cabecera<std::string> *&cabecera,
                                         int indiceArray,
                                         int Hijo::*siguienteIndice,
                                         int indiceCabecera) {
+    /**
+     * @brief Organiza un hijo en la categoría especificada.
+     *
+     * @param cabecera Cabecera de la categoría.
+     * @param indiceArray Índice en el arreglo de hijos.
+     * @param siguienteIndice Índice del siguiente hijo en la categoría.
+     * @param indiceCabecera Índice de la cabecera de la categoría.
+     */
 
+    // Si la cabecera dada está vacía, agrega la posición en la cabecera
     if (cabecera[indiceCabecera].indice == -1) {
         cabecera[indiceCabecera].indice = indiceArray;
     } else {
+        // De lo contrario, recorre la categoría hasta encontrar el último elemento
         int indiceC = cabecera[indiceCabecera].indice;
-        while (hijos[indiceC].*siguienteIndice != -1)
+        while (hijos[indiceC].*siguienteIndice != -1) {
             indiceC = hijos[indiceC].*siguienteIndice;
+        }
 
+        // Agrega la posición del nuevo hijo al final de la categoría
         hijos[indiceC].*siguienteIndice = indiceArray;
     }
 }
+
 
 void MultilistaHijo::CambiarCategoria(Cabecera<std::string> *&cabecera,
                                       int Hijo::*atributo,
@@ -70,27 +106,45 @@ void MultilistaHijo::CambiarCategoria(Cabecera<std::string> *&cabecera,
                                       int indiceArray,
                                       int indiceCabeceraAntigua,
                                       int (MultilistaHijo::*getCabecera)(int)) {
+    /**
+     * @brief Cambia la categoría de un hijo.
+     *
+     * @param cabecera Cabecera de la categoría.
+     * @param atributo Atributo que se cambiará.
+     * @param valor Nuevo valor para el atributo.
+     * @param siguienteIndice Índice del atributo que se cambiará.
+     * @param indiceArray Índice en el arreglo de hijos.
+     * @param indiceCabeceraAntigua Índice de la cabecera antigua.
+     * @param getCabecera Función para obtener la nueva cabecera.
+     */
+
     int indiceAnterior;
     int indiceSiguiente;
     int indiceArreglo = cabecera[indiceCabeceraAntigua].indice;
 
+    // Recorre todo el arreglo hasta la posición dada, guardando la posición anterior
     indiceAnterior = indiceArreglo;
     indiceSiguiente = hijos[indiceArreglo].*siguienteIndice;
-
     while (indiceArreglo != indiceArray) {
         indiceAnterior = indiceArreglo;
         indiceArreglo = hijos[indiceArreglo].*siguienteIndice;
         indiceSiguiente = hijos[indiceArreglo].*siguienteIndice;
     }
 
+    // Cambia el atributo
     hijos[indiceArray].*atributo = valor;
 
-    if (indiceArreglo == cabecera[indiceCabeceraAntigua].indice)
+    // Si la cabecera del elemento que se eliminó estaba en la cabecera,
+    // se agrega el que estaba después del eliminado
+    if (indiceArreglo == cabecera[indiceCabeceraAntigua].indice) {
         cabecera[indiceCabeceraAntigua].indice = indiceSiguiente;
-    else {
-        hijos[indiceArreglo].*siguienteIndice = indiceSiguiente;
+    } else {
+        // De lo contrario, simplemente se une la posición anterior con la siguiente
+        hijos[indiceAnterior].*siguienteIndice = indiceSiguiente;
     }
 
+    // Se invoca el método de OrganizarCategoria para que inserte el nuevo valor en la
+    // nueva cabecera correspondiente
     OrganizarCategoria(cabecera,
                        indiceArray,
                        siguienteIndice,
@@ -98,6 +152,13 @@ void MultilistaHijo::CambiarCategoria(Cabecera<std::string> *&cabecera,
 }
 
 int MultilistaHijo::getCabeceraEdad(int indiceArray) {
+    /**
+     * @brief Obtiene la cabecera de la categoría de edad para un hijo en específico.
+     *
+     * @param indiceArray Índice en el arreglo de hijos.
+     * @return La cabecera de la categoría de edad.
+     */
+
     int edad = hijos[indiceArray].edad;
     int indiceCabecera;
 
@@ -114,10 +175,23 @@ int MultilistaHijo::getCabeceraEdad(int indiceArray) {
 }
 
 void MultilistaHijo::Eliminar(int indiceArray) {
+    /**
+     * @brief Elimina un hijo de la multilista.
+     *
+     * @param indiceArray Índice en el arreglo de hijos a eliminar.
+     */
+
     hijos[indiceArray].estado = false;
 }
 
 void MultilistaHijo::ImprimirEdad(int edad1, int edad2) {
+    /**
+     * @brief Imprime la categoría de edad de los hijos en un rango específico.
+     *
+     * @param edad1 Edad mínima del rango.
+     * @param edad2 Edad máxima del rango.
+     */
+
     int indiceCabecera;
 
     if (edad1 >= 0 && edad2 <= 5) {
@@ -139,4 +213,15 @@ void MultilistaHijo::ImprimirEdad(int edad1, int edad2) {
         std::cout << hijos[indice].edad << std::endl;
         indice = hijos[indice].sigEdad;
     }
+}
+
+Hijo MultilistaHijo::getHijo(int indiceArray) {
+    /**
+     * @brief Obtiene un hijo del arreglo.
+     *
+     * @param indiceArray Índice en el arreglo de hijos.
+     * @return El hijo en la posición especificada.
+     */
+
+    return hijos[indiceArray];
 }
