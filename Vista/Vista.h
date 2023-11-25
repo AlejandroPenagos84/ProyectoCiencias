@@ -15,8 +15,14 @@ public:
     void IngresarDatos();
     void MenuGlobal();
     void MenuConsultas();
+    int MostrarElementos(std::string* arreglo, int tam);
+    void MenuPrimeraConsulta(std::string* arregloPaises,
+                             std::string* arregloCiudades,
+                             std::string* arregloSucursales);
 
-    void MenuPrimeraConsulta();
+
+private:
+
 };
 
 #endif

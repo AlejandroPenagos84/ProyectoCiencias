@@ -14,7 +14,7 @@ public:
     MultilistaPaises* multilistaPaises = new MultilistaPaises(40);
     Controlador();
     void MostrarMenu();
-    void Consulta1();
+    void PrimeraConsulta();
 
 };
 

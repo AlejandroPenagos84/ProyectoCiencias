@@ -65,3 +65,14 @@ Pais MultilistaPaises::getPais(int indiceArray) {
     return paises[indiceArray];
 }
 
+int MultilistaPaises::getSize() {return size;}
+
+std::string* MultilistaPaises::getElementos()
+{
+    std::string* arreglo = new std::string[size];
+
+    for(int i =0; i<size;i++)
+        arreglo[i] = paises[i].nombre;
+
+    return arreglo;
+}

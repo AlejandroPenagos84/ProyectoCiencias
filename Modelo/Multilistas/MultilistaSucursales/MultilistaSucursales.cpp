@@ -83,3 +83,14 @@ Sucursal MultilistaSucursales::getSucursal(int indiceArray) {
     return sucursales[indiceArray];
 }
 
+int MultilistaSucursales::getSize(){return size;}
+
+std::string* MultilistaSucursales::getElementos()
+{
+    std::string* arreglo = new std::string[size];
+
+    for(int i =0; i<size;i++)
+        arreglo[i] = sucursales[i].nombre;
+
+    return arreglo;
+}

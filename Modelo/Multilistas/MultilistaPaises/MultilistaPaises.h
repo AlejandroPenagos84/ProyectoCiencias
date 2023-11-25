@@ -63,6 +63,9 @@ public:
      * @return El país en la posición especificada.
      */
     Pais getPais(int indiceArray);
+
+    int getSize();
+    std::string* getElementos();
 };
 
 #endif

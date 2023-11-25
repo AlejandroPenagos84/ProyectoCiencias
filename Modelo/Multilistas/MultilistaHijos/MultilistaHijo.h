@@ -79,6 +79,8 @@ public:
      */
     void ImprimirEdad(int inicio, int fin);
 
+    Cabecera<std::string>* getCabecera();
+
 private:
     /**
      * @brief Organiza un hijo en la categoría especificada.
@@ -120,6 +122,10 @@ private:
      * @return La cabecera de la categoría de edad.
      */
     int getCabeceraEdad(int indiceArray);
+
+    std::string* getElementos();
+
+
 };
 
 #endif

@@ -225,3 +225,18 @@ Hijo MultilistaHijo::getHijo(int indiceArray) {
 
     return hijos[indiceArray];
 }
+
+std::string* MultilistaHijo::getElementos()
+{
+    std::string* arreglo = new std::string[size];
+
+    for(int i =0; i<size;i++)
+        arreglo[i] = hijos[i].nombre;
+
+    return arreglo;
+}
+
+Cabecera<std::string>* MultilistaHijo::getCabecera()
+{
+    return CEdad;
+}

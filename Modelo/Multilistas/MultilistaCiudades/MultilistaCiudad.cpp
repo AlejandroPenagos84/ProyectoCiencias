@@ -64,3 +64,17 @@ Ciudad MultilistaCiudad::getCiudad(int indiceArray) {
 
     return ciudades[indiceArray];
 }
+
+
+std::string* MultilistaCiudad::getElementos()
+{
+    std::string* arreglo = new std::string[size];
+
+    for(int i =0; i<size;i++)
+        arreglo[i] = ciudades[i].nombre;
+
+    return arreglo;
+}
+
+
+int MultilistaCiudad::getSize() {return size;}

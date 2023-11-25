@@ -91,7 +91,18 @@ void Vista::MenuConsultas()
     std::cout<<"Ingresa una opción: ";
 }
 
-void Vista::MenuPrimeraConsulta()
+
+int  Vista::MostrarElementos(std::string* arreglo, int tam)
 {
-    
+    int opcion;
+    for(int i = 0; i < tam; i++)
+        std::cout<<(i+1)<<". "<<arreglo[i]<<std::endl;
+
+    while(true)
+    {
+        std::cin>>opcion;
+        if((opcion-1>=0 && opcion-1 < tam)){
+            return opcion-1;
+        }else continue;
+    }
 }

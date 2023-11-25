@@ -71,6 +71,9 @@ public:
      */
     Sucursal getSucursal(int indiceArray);
 
+    std::string* getElementos();
+
+    int getSize();
 };
 
 #endif

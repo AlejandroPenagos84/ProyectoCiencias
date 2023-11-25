@@ -1,7 +1,7 @@
 # ninja log v5
 31	1116	7226370497249155	CMakeFiles/ProyectoCiencias.dir/Modelo/Multilistas/MultilistaHijos/MultilistaHijo.cpp.obj	b9fdb2ffcf98dda2
 41	1547	7226369751460115	CMakeFiles/ProyectoCiencias.dir/Modelo/Multilistas/MultilistaSucursales/MultilistaSucursales.cpp.obj	4f375872a9a7a07
-2	647	7226490471291314	build.ninja	8a34e4e78c1cd56b
+2	647	7226506223046067	build.ninja	8a34e4e78c1cd56b
 20	1652	7226369752550936	CMakeFiles/ProyectoCiencias.dir/Modelo/Multilistas/MultilistaEmpleados/MultilistaEmpleados.cpp.obj	32c0c47184224951
 49	1552	7226369751209714	CMakeFiles/ProyectoCiencias.dir/Modelo/Multilistas/MultilistaEmpleados/Modificar.cpp.obj	e3f3e3c88586ddfe
 31	1702	7226369753032424	CMakeFiles/ProyectoCiencias.dir/Modelo/Multilistas/MultilistaEmpleados/Imprimir.cpp.obj	da6723a54f873405

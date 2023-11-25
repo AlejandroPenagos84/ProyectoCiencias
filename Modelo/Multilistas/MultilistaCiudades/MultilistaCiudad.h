@@ -63,6 +63,9 @@ public:
      * @return La ciudad en la posición especificada.
      */
     Ciudad getCiudad(int indiceArray);
+
+    int getSize();
+    std::string* getElementos();
 };
 
 #endif
