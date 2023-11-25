@@ -3,4 +3,3 @@
 *.o
 *.exe
 */cmake-build-debug
-*CMakeLists.txt
