@@ -38,15 +38,8 @@ public:
     /**
      * @brief Agrega una sucursal a la multilista.
      *
-     * @param nombre Nombre de la sucursal.
-     * @param direccion Dirección de la sucursal.
-     * @param barrio Barrio de la sucursal.
-     * @param nombreGerente Nombre del gerente de la sucursal.
      */
-    void AgregarSucursal(std::string nombre,
-                         std::string direccion,
-                         std::string barrio,
-                         std::string nombreGerente);
+    void AgregarSucursal(Sucursal sucursal);
 
     /**
      * @brief Elimina una sucursal de la multilista.

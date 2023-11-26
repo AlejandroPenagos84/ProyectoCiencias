@@ -49,43 +49,8 @@ public:
     /**
      * @brief Método para agregar un nuevo empleado a la multilista.
      *
-     * @param nombre Nombre del empleado.
-     * @param apellido Apellido del empleado.
-     * @param tipoIdentificacion Tipo de identificación del empleado.
-     * @param numIdentificacion Número de identificación del empleado.
-     * @param sexo Género del empleado.
-     * @param telefonoCelular Número de teléfono celular del empleado.
-     * @param telefonoFijo Número de teléfono fijo del empleado.
-     * @param email Dirección de correo electrónico del empleado.
-     * @param ciudadNacimiento Ciudad de nacimiento del empleado.
-     * @param paisNacimiento País de nacimiento del empleado.
-     * @param ciudadResidencia Ciudad de residencia actual del empleado.
-     * @param direccion Dirección del empleado.
-     * @param tieneHijos Indica si el empleado tiene hijos o no.
-     * @param actividadLaboral Actividad laboral del empleado.
-     * @param sucursalTrabajo Sucursal donde trabaja el empleado.
-     * @param barrio Barrio de residencia del empleado.
-     * @param numHijos Número de hijos del empleado.
-     * @param fechaNacimiento Fecha de nacimiento del empleado.
      */
-    void AgregarEmpleado(std::string nombre,
-                         std::string apellido,
-                         std::string tipoIdentificacion,
-                         std::string numIdentificacion,
-                         char sexo,
-                         std::string telefonoCelular,
-                         std::string telefonoFijo,
-                         std::string email,
-                         std::string ciudadNacimiento,
-                         std::string paisNacimiento,
-                         std::string ciudadResidencia,
-                         std::string direccion,
-                         char tieneHijos,
-                         std::string actividadLaboral,
-                         std::string sucursalTrabajo,
-                         std::string barrio,
-                         int numHijos,
-                         std::string fechaNacimiento);
+    void AgregarEmpleado(Empleado empleado);
 
 
     /**

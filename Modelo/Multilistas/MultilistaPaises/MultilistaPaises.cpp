@@ -14,15 +14,13 @@ MultilistaPaises::MultilistaPaises(int max) {
     size = 0;
 }
 
-void MultilistaPaises::AgregarPais(std::string nombre) {
+void MultilistaPaises::AgregarPais(Pais pais) {
     /**
      * @brief Agrega un país a la multilista.
      *
      * @param nombre Nombre del país.
      */
 
-    Pais pais;
-    pais.nombre = std::move(nombre);
     // Crear una nueva multilista de ciudades para el país
     pais.ciudades = new MultilistaCiudad(32);
 

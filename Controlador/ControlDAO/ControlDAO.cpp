@@ -270,6 +270,7 @@ void ControlDAO::LeerPaisesDAO(const std::string &filename)
 
                 // Add the row to the data vector
                 paisesLlaveP->Insert(sucursalesLlaveP,sucursalesLlaveP->createNodo(row.pk,pos));
+                paises->Insert(paises,paises->createNodo(row.pk,row));
                 pos++;
             } catch (const std::invalid_argument &e) {
                 std::cerr << "Error converting column values to integers: " << e.what() << std::endl;
@@ -315,6 +316,10 @@ RBTree<int, Sucursal> *ControlDAO::getSucurcalesLlaveF() const {
 
 RBTree<int, Ciudad> *ControlDAO::getCiudadesLlaveF() const {
     return ciudadesLlaveF;
+}
+
+RBTree<int, Pais> *ControlDAO::getPaises() const {
+    return paises;
 }
 
 

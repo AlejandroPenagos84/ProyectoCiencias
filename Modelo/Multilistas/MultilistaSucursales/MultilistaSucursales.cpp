@@ -8,20 +8,12 @@ MultilistaSucursales::MultilistaSucursales(int max) {
     size = 0;
 }
 
-void MultilistaSucursales::AgregarSucursal(std::string nombre,
-                                           std::string direccion,
-                                           std::string barrio,
-                                           std::string nombreGerente) {
+void MultilistaSucursales::AgregarSucursal(Sucursal sucursal) {
     /**
      * @brief Agrega una nueva sucursal a la multilista.
      *
-     * @param nombre Nombre de la sucursal.
-     * @param direccion Dirección de la sucursal.
-     * @param barrio Barrio de la sucursal.
-     * @param nombreGerente Nombre del gerente de la sucursal.
      */
 
-    Sucursal sucursal(nombre, direccion, barrio, nombreGerente);
 
     // Crear una nueva multilista de empleados para la sucursal
     sucursal.empleados = new MultilistaEmpleados(40);

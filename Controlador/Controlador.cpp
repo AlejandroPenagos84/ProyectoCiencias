@@ -2,8 +2,8 @@
 
 Controlador::Controlador() {
     controlDao = new ControlDAO(this);
-    MultilistaHijo* hijos = new MultilistaHijo(5);
-    MultilistaEmpleados* empleados = new MultilistaEmpleados(3);
+
+    MultilistaPaises* multilistaPaises = new MultilistaPaises(18);
 
     controlDao->LeerHijosDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\hijos.csv)");
     controlDao->LeerEmpleadosDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\empleados.csv)");
@@ -15,11 +15,10 @@ Controlador::Controlador() {
     Queue<Nodo<int,Hijo>*> colaHijosF = controlDao->getHijosLlaveF()->inorden();
 
     //Cola con la clave empleados
-    Queue<Nodo<int,Empleado>*> colaEmpleados = controlDao->getEmpleadosLlaveF()->inorden();
+    Queue<Nodo<int,int>*> colaEmpleadosP = controlDao->getEmpleadosLlaveP()->inorden();
 
+    //Queue<Nodo<int,Pais>*> colaEmpleadoP = controlDao->getEmpleadosLlaveP();
 
-
-    std::cout<<hijos->getHijo(0).nombre;
 }
 
 

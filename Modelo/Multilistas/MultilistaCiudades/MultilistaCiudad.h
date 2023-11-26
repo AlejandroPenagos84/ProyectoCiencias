@@ -39,12 +39,11 @@ public:
      *
      * @param nombre Nombre de la ciudad.
      */
-    void AgregarCiudad(std::string nombre);
+    void AgregarCiudad(Ciudad ciudad);
 
     /**
      * @brief Elimina una ciudad de la multilista.
      *
-     * @param indiceArray Índice en el arreglo de ciudades a eliminar.
      */
     void EliminarCiudad(int indiceArray);
 

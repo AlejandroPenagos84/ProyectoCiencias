@@ -43,10 +43,8 @@ public:
     /**
      * @brief Agrega un hijo a la multilista.
      *
-     * @param nombre Nombre del hijo.
-     * @param fechaNacimiento Fecha de nacimiento del hijo.
      */
-    void AgregarHijo(std::string nombre, std::string fechaNacimiento);
+    void AgregarHijo(Hijo hijo);
 
     /**
      * @brief Modifica la categoría de un hijo en la multilista.

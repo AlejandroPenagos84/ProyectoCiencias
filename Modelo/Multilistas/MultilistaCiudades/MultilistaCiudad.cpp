@@ -12,14 +12,13 @@ MultilistaCiudad::MultilistaCiudad(int max) {
     size = 0;
 }
 
-void MultilistaCiudad::AgregarCiudad(std::string nombre) {
+void MultilistaCiudad::AgregarCiudad(Ciudad ciudad) {
     /**
      * @brief Agrega una ciudad a la multilista.
      *
      * @param nombre Nombre de la ciudad.
      */
 
-    Ciudad ciudad(nombre);
 
     // Crear una nueva multilista de sucursales para la ciudad
     ciudad.sucursales = new MultilistaSucursales(20);

@@ -23,7 +23,11 @@ private:
     RBTree<int,Empleado>* empleadosLlaveF;
     RBTree<int, Sucursal>* sucurcalesLlaveF;
     RBTree<int,Ciudad>* ciudadesLlaveF;
+    RBTree<int,Pais>* paises;
+public:
+    RBTree<int, Pais> *getPaises() const;
 
+private:
     int pos;
 public:
 

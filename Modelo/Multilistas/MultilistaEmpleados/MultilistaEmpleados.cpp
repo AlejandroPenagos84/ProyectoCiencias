@@ -90,49 +90,9 @@ MultilistaEmpleados::MultilistaEmpleados(int max) {
  * @param numHijos Número de hijos del empleado.
  * @param fechaNacimiento Fecha de nacimiento del empleado.
  */
-void MultilistaEmpleados::AgregarEmpleado(
-        std::string nombre,
-        std::string apellido,
-        std::string tipoIdentificacion,
-        std::string numIdentificacion,
-        char sexo,
-        std::string telefonoCelular,
-        std::string telefonoFijo,
-        std::string email,
-        std::string ciudadNacimiento,
-        std::string paisNacimiento,
-        std::string ciudadResidencia,
-        std::string direccion,
-        char tieneHijos,
-        std::string actividadLaboral,
-        std::string sucursalTrabajo,
-        std::string barrio,
-        int numHijos,
-        std::string fechaNacimiento) {
-
-    Empleado empleado(
-            std::move(nombre),
-            std::move(apellido),
-            std::move(tipoIdentificacion),
-            std::move(numIdentificacion),
-            sexo,
-            std::move(telefonoCelular),
-            std::move(telefonoFijo),
-            std::move(email),
-            std::move(ciudadNacimiento),
-            std::move(paisNacimiento),
-            std::move(ciudadResidencia),
-            std::move(direccion),
-            tieneHijos,
-            std::move(actividadLaboral),
-            std::move(sucursalTrabajo),
-            std::move(barrio),
-            numHijos,
-            std::move(fechaNacimiento));
-
-    //std::cout<<numHijos<<std::endl;
-    std::cout<<"APELLIDO: "<<apellido<<std::endl;
-    empleado.hijos = new MultilistaHijo(numHijos);
+void MultilistaEmpleados::AgregarEmpleado(Empleado empleado)
+{
+    empleado.hijos = new MultilistaHijo(empleado.numHijos);
     empleados[posLibre] = std::move(empleado);
 
     //Organizar Por Sexo

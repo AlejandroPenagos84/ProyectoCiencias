@@ -39,12 +39,11 @@ public:
      *
      * @param nombre Nombre del país.
      */
-    void AgregarPais(std::string nombre);
+    void AgregarPais(Pais pais);
 
     /**
      * @brief Elimina un país de la multilista.
      *
-     * @param indiceArray Índice en el arreglo de países a eliminar.
      */
     void EliminarPais(int indiceArray);
 
