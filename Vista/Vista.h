@@ -2,7 +2,7 @@
 #define VISTA_H
 #include <iostream>
 #include "Formulario.h"
-
+#include <limits>
 
 class Vista
 {

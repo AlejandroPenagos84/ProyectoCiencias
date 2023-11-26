@@ -3,100 +3,101 @@
 Controlador::Controlador() {
     controlDao = new ControlDAO(this);
 
-    MultilistaPaises* multilistaPaises = new MultilistaPaises(18);
+    multilistaPaises = new MultilistaPaises(18);
 
-    controlDao->LeerHijosDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\hijos.csv)");
-    controlDao->LeerEmpleadosDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\empleados.csv)");
-    controlDao->LeerSucursalesDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\sucursales.csv)");
-    controlDao->LeerCiudadesDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\ciudades.csv)");
-    controlDao->LeerPaisesDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\paises.csv)");
+    controlDao->LeerHijosDAO(
+            R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\hijos.csv)");
+    controlDao->LeerEmpleadosDAO(
+            R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\empleados.csv)");
+    controlDao->LeerSucursalesDAO(
+            R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\sucursales.csv)");
+    controlDao->LeerCiudadesDAO(
+            R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\ciudades.csv)");
+    controlDao->LeerPaisesDAO(
+            R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\paises.csv)");
 
-    RBTree<int,Empleado>* arbolEmpleados = controlDao->getEmpleadosLlaveF();
-    RBTree<int,Sucursal>* arbolSucursales = controlDao->getSucurcalesLlaveF();
-    RBTree<int,Ciudad>* arbolCiudades = controlDao->getCiudadesLlaveF();
-    RBTree<int,Pais>* arbolPaises = controlDao->getPaises();
+    RBTree<int, Empleado> *arbolEmpleados = controlDao->getEmpleadosLlaveF();
+    RBTree<int, Sucursal> *arbolSucursales = controlDao->getSucurcalesLlaveF();
+    RBTree<int, Ciudad> *arbolCiudades = controlDao->getCiudadesLlaveF();
+    RBTree<int, Pais> *arbolPaises = controlDao->getPaises();
 
     //Cola Con la Clave de los hijos
-    Queue<Nodo<int,Hijo>*> colaHijosF = controlDao->getHijosLlaveF()->inorden();
+    Queue<Nodo<int, Hijo> *> colaHijosF = controlDao->getHijosLlaveF()->inorden();
 
     //Cola con la clave empleados
-    Queue<Nodo<int,Empleado>*> colaEmpleadosF = controlDao->getEmpleadosLlaveF()->inorden();
+    Queue<Nodo<int, Empleado> *> colaEmpleadosF = controlDao->getEmpleadosLlaveF()->inorden();
 
     //Cola Sucursales
-    Queue<Nodo<int,Sucursal>*> colaSucursalesF = controlDao->getSucurcalesLlaveF()->inorden();
+    Queue<Nodo<int, Sucursal> *> colaSucursalesF = controlDao->getSucurcalesLlaveF()->inorden();
 
     //Cola Ciudad
-    Queue<Nodo<int,Ciudad>*> colaCiudadesF = controlDao->getCiudadesLlaveF()->inorden();
+    Queue<Nodo<int, Ciudad> *> colaCiudadesF = controlDao->getCiudadesLlaveF()->inorden();
 
     //Cola Paises
-    Queue<Nodo<int,Pais>*> colaPaisesF = controlDao->getPaises()->inorden();
+    Queue<Nodo<int, Pais> *> colaPaisesF = controlDao->getPaises()->inorden();
 
-    while(!colaHijosF.IsEmpty())
-    {
-        if(arbolEmpleados->findNodo(colaHijosF.Front()->otroDato.fk) != nullptr)
-        {
+    while (!colaHijosF.IsEmpty()) {
+        if (arbolEmpleados->findNodo(colaHijosF.Front()->otroDato.fk) != nullptr) {
             // Busca el nodo con la llave foranea
             // recordando que la llave foranea en uno es la primaria en otro
 
             // Ya con el dato, le digo a la multilista de hijos de ese empleado que agregue
             // el hijo que esta en la cola
-            arbolEmpleados->findNodo(colaHijosF.Front()->otroDato.fk)->otroDato.hijos->AgregarHijo(colaHijosF.Dequeue()->otroDato);
+            arbolEmpleados->findNodo(colaHijosF.Front()->otroDato.fk)->otroDato.hijos->AgregarHijo(
+                    colaHijosF.Dequeue()->otroDato);
         }
     }
 
-    while(!colaEmpleadosF.IsEmpty()){
-        if(arbolSucursales->findNodo(colaEmpleadosF.Front()->otroDato.fk) != nullptr)
-        {
+    while (!colaEmpleadosF.IsEmpty()) {
+        if (arbolSucursales->findNodo(colaEmpleadosF.Front()->otroDato.fk) != nullptr) {
             Empleado aux = colaEmpleadosF.Dequeue()->otroDato;
             (arbolSucursales->findNodo(aux.fk))->otroDato.empleados->AgregarEmpleado(aux);
         }
     }
 
-
-    while(!colaSucursalesF.IsEmpty()){
-        if(arbolCiudades->findNodo(colaSucursalesF.Front()->otroDato.fk) != nullptr)
-        {
-            (arbolCiudades->findNodo(colaSucursalesF.Front()->otroDato.fk))->otroDato.sucursales->AgregarSucursal(colaSucursalesF.Dequeue()->otroDato);
+    while (!colaSucursalesF.IsEmpty()) {
+        if (arbolCiudades->findNodo(colaSucursalesF.Front()->otroDato.fk) != nullptr) {
+            (arbolCiudades->findNodo(colaSucursalesF.Front()->otroDato.fk))->otroDato.sucursales->AgregarSucursal(
+                    colaSucursalesF.Dequeue()->otroDato);
         }
     }
 
-
-    while(!colaCiudadesF.IsEmpty()){
-        if(arbolPaises->findNodo(colaCiudadesF.Front()->otroDato.fk) != nullptr)
-        {
-            (arbolPaises->findNodo(colaCiudadesF.Front()->otroDato.fk))->otroDato.ciudades->AgregarCiudad(colaCiudadesF.Dequeue()->otroDato);
+    while (!colaCiudadesF.IsEmpty()) {
+        if (arbolPaises->findNodo(colaCiudadesF.Front()->otroDato.fk) != nullptr) {
+            (arbolPaises->findNodo(colaCiudadesF.Front()->otroDato.fk))->otroDato.ciudades->AgregarCiudad(
+                    colaCiudadesF.Dequeue()->otroDato);
         }
     }
 
-    while (!colaPaisesF.IsEmpty())
-    {
+    while (!colaPaisesF.IsEmpty()) {
         multilistaPaises->AgregarPais(colaPaisesF.Dequeue()->otroDato);
     }
 
-    vista.MostrarElementos(multilistaPaises->getPais(0).ciudades->getCiudad(0).sucursales->getElementos(),multilistaPaises->getPais(0).ciudades->getCiudad(0).sucursales->getSize());
-
-    //Queue<Nodo<int,Pais>*> colaEmpleadoP = controlDao->getEmpleadosLlaveP();
-
-}
-
-
-
-void Controlador::MostrarMenu() {
-    vista.MenuGlobal();
 }
 
 void Controlador::PrimeraConsulta() {
+
+
     int numPais = vista.MostrarElementos(multilistaPaises->getElementos(),
                                          multilistaPaises->getSize());
+
+    delete[] multilistaPaises->getElementos();
+
     Pais auxPais = multilistaPaises->getPais(numPais);
 
     int numCiudad = vista.MostrarElementos(auxPais.ciudades->getElementos(), auxPais.ciudades->getSize());
     Ciudad auxCiudad = auxPais.ciudades->getCiudad(numCiudad);
 
+    auxPais.ciudades->getElementos();
+
     int numSucursal = vista.MostrarElementos(auxCiudad.sucursales->getElementos(), auxCiudad.sucursales->getSize());
     Sucursal auxSucursal = auxCiudad.sucursales->getSucursal(numSucursal);
 
+    delete[] auxCiudad.sucursales->getElementos();
     int *arregloValidaciones = new int[5];
+
+    for(int i = 0; i < 5;i++)
+        arregloValidaciones[i] = 0;
 
     for (int i = 0; i < auxSucursal.empleados->getNumEmpleados(); i++) {
         Empleado auxEmpleado = auxSucursal.empleados->getEmpleado(i);
@@ -113,6 +114,11 @@ void Controlador::PrimeraConsulta() {
     }
     vista.MenuPrimeraConsulta(arregloValidaciones);
     delete[] arregloValidaciones;
+}
+
+
+void Controlador::MostrarMenu() {
+    vista.MenuGlobal();
 }
 
 void Controlador::SegundaConsulta() {

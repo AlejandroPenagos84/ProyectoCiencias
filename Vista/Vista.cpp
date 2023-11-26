@@ -92,18 +92,28 @@ void Vista::MenuConsultas()
 }
 
 
-int  Vista::MostrarElementos(std::string* arreglo, int tam)
-{
+int Vista::MostrarElementos(std::string* arreglo, int tam) {
     int opcion;
-    for(int i = 0; i < tam; i++)
-        std::cout<<(i+1)<<". "<<arreglo[i]<<std::endl;
 
-    while(true)
-    {
-        std::cin>>opcion;
-        if((opcion-1>=0 && opcion-1 < tam)){
-            return opcion-1;
-        }else continue;
+    for (int i = 0; i < tam; i++) {
+        std::cout << (i + 1) << ". " << arreglo[i] << std::endl;
+    }
+
+    while (true) {
+        std::cout << "Ingrese su opción: ";
+        std::cin >> opcion;
+
+        if (std::cin.fail()) {
+            // La entrada no es un número entero
+            std::cin.clear(); // Limpiar la bandera de error
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar la entrada incorrecta
+        } else if (opcion >= 1 && opcion <= tam) {
+            // La opción es válida
+            return opcion - 1;
+        }
+
+        // Mostrar mensaje de error y repetir el bucle
+        std::cout << "Opción inválida. Intente de nuevo." << std::endl;
     }
 }
 

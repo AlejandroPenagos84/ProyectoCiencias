@@ -23,7 +23,7 @@ void MultilistaPaises::AgregarPais(Pais pais) {
 
     // Crear una nueva multilista de ciudades para el país
 
-    paises[posLibre] = pais;
+    paises[posLibre] = std::move(pais);
 
 
     // Incrementar posición libre y tamaño

@@ -8,6 +8,7 @@ int main(int argc, char **argv)
 {
     std::locale::global(std::locale(""));
 	Controlador controlador;
+    controlador.PrimeraConsulta();
 
 	return 0;
 }

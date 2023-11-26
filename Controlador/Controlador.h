@@ -8,18 +8,18 @@
 class ControlDAO;
 class Controlador
 {
+private:
     Vista vista;
     ControlDAO* controlDao;
-    std::vector<Pais> paises;
-    std::vector<Ciudad> ciudades;
+    MultilistaPaises* multilistaPaises;
 
 public:
-    MultilistaPaises* multilistaPaises;
+
     Controlador();
     void MostrarMenu();
     void PrimeraConsulta();
     void SegundaConsulta();
-    void CuartaConsulta();
+    //void CuartaConsulta();
 
 };
 
