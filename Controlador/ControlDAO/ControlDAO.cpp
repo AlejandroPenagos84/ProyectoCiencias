@@ -12,7 +12,7 @@ ControlDAO::ControlDAO(Controlador *ctrl) : control(ctrl) {
     empleadosLlaveF = new RBTree<int,Empleado>;
     sucurcalesLlaveF = new RBTree<int,Sucursal>;
     ciudadesLlaveF = new RBTree<int, Ciudad>;
-
+    paises = new RBTree<int,Pais>;
     pos = 0;
 }
 

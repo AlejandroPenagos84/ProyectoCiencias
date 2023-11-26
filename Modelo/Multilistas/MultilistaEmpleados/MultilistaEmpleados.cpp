@@ -71,24 +71,7 @@ MultilistaEmpleados::MultilistaEmpleados(int max) {
 /**
  * @brief Agrega un empleado a la multilista e invoca los métodos privados para organizar los datos.
  *
- * @param nombre Nombre del empleado.
- * @param apellido Apellido del empleado.
- * @param tipoIdentificacion Tipo de identificación del empleado.
- * @param numIdentificacion Número de identificación del empleado.
- * @param sexo Género del empleado.
- * @param telefonoCelular Número de teléfono celular del empleado.
- * @param telefonoFijo Número de teléfono fijo del empleado.
- * @param email Correo electrónico del empleado.
- * @param ciudadNacimiento Ciudad de nacimiento del empleado.
- * @param paisNacimiento País de nacimiento del empleado.
- * @param ciudadResidencia Ciudad de residencia del empleado.
- * @param direccion Dirección del empleado.
- * @param tieneHijos Indicador de si el empleado tiene hijos.
- * @param actividadLaboral Actividad laboral del empleado.
- * @param sucursalTrabajo Sucursal de trabajo del empleado.
- * @param barrio Barrio de residencia del empleado.
- * @param numHijos Número de hijos del empleado.
- * @param fechaNacimiento Fecha de nacimiento del empleado.
+ * @param Empleado
  */
 void MultilistaEmpleados::AgregarEmpleado(Empleado empleado)
 {
