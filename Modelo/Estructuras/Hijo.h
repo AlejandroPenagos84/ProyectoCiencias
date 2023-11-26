@@ -2,6 +2,7 @@
 #define HIJO_H
 #include "Edad.h"
 #include <string>
+
 struct Hijo
 {
     std::string nombre{};
@@ -10,7 +11,6 @@ struct Hijo
     int edad = calcularEdad(obtenerFechaDesdeString(fechaNacimiento));
 
     int sigEdad{-1};
-
 
     Hijo():nombre(), fechaNacimiento(){}
 

@@ -24,6 +24,10 @@ void MultilistaCiudad::AgregarCiudad(std::string nombre) {
     // Crear una nueva multilista de sucursales para la ciudad
     ciudad.sucursales = new MultilistaSucursales(20);
 
+    // Agregar Ciudad
+
+    ciudades[posLibre] = ciudad;
+
     // Incrementar posición libre y tamaño
     posLibre++;
     size++;

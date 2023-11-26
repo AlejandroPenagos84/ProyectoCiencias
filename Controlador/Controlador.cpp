@@ -2,7 +2,21 @@
 
 Controlador::Controlador() {
     controlDao = new ControlDAO(this);
+
+    multilistaPaises = new MultilistaPaises(40);
+
+    multilistaPaises->AgregarPais("Colombia");
+    multilistaPaises->AgregarPais("Venezuela");
+
+
+    multilistaPaises->getPais(0).ciudades->AgregarCiudad("Caracas");
+    multilistaPaises->getPais(0).ciudades->AgregarCiudad("Bogota");
+
+
+    multilistaPaises->getPais(0).ciudades->getCiudad(0).sucursales;
 }
+
+
 
 void Controlador::MostrarMenu() {
     vista.MenuGlobal();

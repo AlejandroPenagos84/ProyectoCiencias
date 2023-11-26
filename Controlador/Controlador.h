@@ -3,16 +3,18 @@
 #include "../Vista/Vista.h"
 #include "../MultilistaPaises/MultilistaPaises.h"
 #include "ControlDAO/ControlDAO.h"
-#include "../Librerias/ColasPrioridad.h"
+#include<vector>
 
 class ControlDAO;
 class Controlador
 {
     Vista vista;
     ControlDAO* controlDao;
+    std::vector<Pais> paises;
+    std::vector<Ciudad> ciudades;
 
 public:
-    MultilistaPaises* multilistaPaises = new MultilistaPaises(40);
+    MultilistaPaises* multilistaPaises;
     Controlador();
     void MostrarMenu();
     void PrimeraConsulta();

@@ -3,6 +3,7 @@
 
 #include "../../Estructuras/Ciudad.h"
 
+
 /**
  * @brief Clase MultilistaCiudad
  *
@@ -13,7 +14,7 @@ private:
     /**
      * @brief Arreglo de ciudades.
      */
-    Ciudad* ciudades;
+    Ciudad *ciudades;
 
     /**
      * @brief Posición libre actual en el arreglo de ciudades.
@@ -65,7 +66,9 @@ public:
     Ciudad getCiudad(int indiceArray);
 
     int getSize();
-    std::string* getElementos();
+
+    std::string *getElementos();
+
 };
 
 #endif

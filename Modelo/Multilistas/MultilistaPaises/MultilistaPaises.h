@@ -2,6 +2,7 @@
 #define MULTILISTAPAISES_H
 
 #include "../../Estructuras/Pais.h"
+#include<vector>
 
 /**
  * @brief Clase MultilistaPaises
@@ -65,7 +66,8 @@ public:
     Pais getPais(int indiceArray);
 
     int getSize();
-    std::string* getElementos();
+
+    std::string *getElementos();
 };
 
 #endif

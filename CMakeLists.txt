@@ -47,5 +47,4 @@ add_executable(ProyectoCiencias
         Controlador/ControlDAO/ControlDAO.cpp
         Modelo/Estructuras/Edad.h
         Modelo/Estructuras/Edad.h
-        Librerias/ColasPrioridad.h
 )

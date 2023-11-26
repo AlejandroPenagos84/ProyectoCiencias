@@ -8,13 +8,11 @@ struct Pais
     //int pk;
     std::string nombre;
     bool estado;
-    //List<Ciudad> ciudades;
 
     MultilistaCiudad* ciudades;
 
     Pais() : nombre(""), estado(true), ciudades(nullptr) {}
 
-    Pais(std::string& nombre)
-        : nombre(nombre), estado(true) {}
+    Pais(std::string& nombre): nombre(nombre), estado(true) {}
 };
 #endif //PROYECTO_CIENCIAS_PAIS_H

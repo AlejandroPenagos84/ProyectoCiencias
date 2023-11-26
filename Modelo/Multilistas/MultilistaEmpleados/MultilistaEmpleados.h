@@ -1,8 +1,10 @@
 #ifndef MULTILISTAEMPLEADOS_H
 #define MULTILISTAEMPLEADOS_H
+
 #include "../../Estructuras/Empleado.h"
 #include "../../Librerias/Arbol.h"
 #include "../../Librerias/Cabecera.h"
+#include<vector>
 
 class MultilistaEmpleados {
 private:
@@ -166,7 +168,7 @@ public:
      */
     Empleado getEmpleado(int indiceArray);
 
-    Cabecera<std::string>* getArreglosRangoHijos();
+    Cabecera<std::string> *getArreglosRangoHijos();
 
 private:
     // Métodos privados para organizar y cambiar atributos en la multilista

@@ -2,6 +2,7 @@
 #define MULTILISTASUCURSALES_H
 
 #include "../../Estructuras/Sucursal.h"
+#include<vector>
 
 /**
  * @brief Clase MultilistaSucursales
@@ -71,7 +72,7 @@ public:
      */
     Sucursal getSucursal(int indiceArray);
 
-    std::string* getElementos();
+    std::string *getElementos();
 
     int getSize();
 };

@@ -3,6 +3,7 @@
 
 #include "../../Estructuras/Hijo.h"
 #include "../../Librerias/Cabecera.h"
+#include<vector>
 
 /**
  * @brief Clase MultilistaHijo
@@ -79,7 +80,7 @@ public:
      */
     void ImprimirEdad(int inicio, int fin);
 
-    Cabecera<std::string>* getCabecera();
+    Cabecera<std::string> *getCabecera();
 
 private:
     /**
@@ -123,7 +124,7 @@ private:
      */
     int getCabeceraEdad(int indiceArray);
 
-    std::string* getElementos();
+    std::string *getElementos();
 
 
 };

@@ -1,5 +1,7 @@
 #include "MultilistaPaises.h"
 
+#include <utility>
+
 MultilistaPaises::MultilistaPaises(int max) {
     /**
      * @brief Constructor de la clase.
@@ -19,10 +21,14 @@ void MultilistaPaises::AgregarPais(std::string nombre) {
      * @param nombre Nombre del país.
      */
 
-    Pais pais(nombre);
-
+    Pais pais;
+    pais.nombre = std::move(nombre);
     // Crear una nueva multilista de ciudades para el país
     pais.ciudades = new MultilistaCiudad(32);
+
+
+    paises[posLibre] = pais;
+
 
     // Incrementar posición libre y tamaño
     posLibre++;
