@@ -14,7 +14,6 @@ struct Sucursal {
     std::string nombreGerente;
     bool estado;
     MultilistaEmpleados* empleados;
-    //List<Empleado> empleados;
 
     Sucursal()
     {

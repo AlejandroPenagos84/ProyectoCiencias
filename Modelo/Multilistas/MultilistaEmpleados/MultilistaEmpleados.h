@@ -38,6 +38,14 @@ private:
     RBTree<std::string, int> *arbolBarrio;
     RBTree<std::string, int> *arbolSucursales;
 
+    // Numero de Hombres Y Mujeres
+    int numHombres;
+    int numMujeres;
+public:
+    int getNumHombres();
+
+    int getNumMujeres();
+
 public:
     /**
      * @brief Constructor de la clase MultilistaEmpleados.

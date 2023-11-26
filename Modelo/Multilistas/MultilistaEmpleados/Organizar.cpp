@@ -21,6 +21,11 @@ void MultilistaEmpleados::OrganizarSexo(int indiceArrayEmpleado) {
 
         empleados[indice].sigSexo = indiceArrayEmpleado;
     }
+
+    if(indiceSexo==0)
+        numHombres++;
+    else if(indiceSexo==1)
+        numMujeres++;
 }
 
 /**

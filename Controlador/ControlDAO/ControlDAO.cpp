@@ -94,23 +94,23 @@ void ControlDAO::LeerEmpleadosDAO(const std::string &filename){
                 row.pk = std::stoi(columns[0]);
                 row.fk = std::stoi(columns[1]);
                 row.nombre = (columns[2]);
-                row.apellido = column[3];
-                row.tipoIdentificacion = column[4];
-                row.numIdentificacion = column[5];
-                row.sexo = column[6];
-                row.telefonoCelular = column[7];
-                row.telefonoFijo = column[8];
-                row.email = column[9];
-                row.ciudadNacimiento = column[10];
-                row.paisNacimiento = column[11];
-                row.ciudadResidencia = column[12];
-                row.direccion = column[13];
-                row.tieneHijos = column[14];
-                row.actividadLaboral = column[15];
-                row.sucursalTrabajo = column[16];
-                row.barrio = column[17];
-                row.numHijos = column[18]-'0';
-                row.fechaNacimiento = column[19];
+                row.apellido = columns[3];
+                row.tipoIdentificacion = columns[4];
+                row.numIdentificacion = columns[5];
+                row.sexo = columns[6][0];;
+                row.telefonoCelular = columns[7];
+                row.telefonoFijo = columns[8];
+                row.email = columns[9];
+                row.ciudadNacimiento = columns[10];
+                row.paisNacimiento = columns[11];
+                row.ciudadResidencia = columns[12];
+                row.direccion = columns[13];
+                row.tieneHijos = columns[14][0];
+                row.actividadLaboral = columns[15];
+                row.sucursalTrabajo = columns[16];
+                row.barrio = columns[17];
+                row.numHijos = std::stoi(columns[18]);
+                row.fechaNacimiento = columns[19];
                 row.estado = intToBool(std::stoi(columns[20]));
 
 
@@ -161,9 +161,9 @@ void ControlDAO::LeerSucursalesDAO(const std::string &filename)
                 row.pk = std::stoi(columns[0]);
                 row.fk = std::stoi(columns[1]);
                 row.nombre = (columns[2]);
-                row.direccion = column[3];
-                row.barrio = column[4];
-                row.nombreGerente = column[5];
+                row.direccion = (columns[3]);
+                row.barrio = (columns[4]);
+                row.nombreGerente = (columns[5]);
                 row.estado = intToBool(std::stoi(columns[6]));
 
                 // Add the row to the data vector

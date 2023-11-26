@@ -96,7 +96,7 @@ void Controlador::PrimeraConsulta() {
     delete[] auxCiudad.sucursales->getElementos();
     int *arregloValidaciones = new int[5];
 
-    for(int i = 0; i < 5;i++)
+    for (int i = 0; i < 5; i++)
         arregloValidaciones[i] = 0;
 
     for (int i = 0; i < auxSucursal.empleados->getNumEmpleados(); i++) {
@@ -147,3 +147,26 @@ void Controlador::SegundaConsulta() {
     }
 }
 
+void Controlador::QuintaConsulta() {
+    for (int i = 0; i < multilistaPaises->getSize(); i++) {
+        Pais auxPais = multilistaPaises->getPais(i);
+        vista.Imprimir("\t"+auxPais.nombre);
+        for (int j = 0; j < auxPais.ciudades->getSize(); j++) {
+            Ciudad auxCiudad = auxPais.ciudades->getCiudad(j);
+            vista.Imprimir("\t\t"+auxCiudad.nombre);
+            for (int k = 0; k < auxCiudad.sucursales->getSize(); k++) {
+                Sucursal auxSucusal = auxCiudad.sucursales->getSucursal(k);
+
+                std::string nombreSucursal = "\t\t\tNombre Sucursal "+ auxSucusal.nombre;
+                std::string nombreSucursalG = "\t\t\tNombre Gerente "+ auxSucusal.nombreGerente;
+                std::string numHombre = "\t\t\t\tNúmero de Hombres "+std::to_string(auxSucusal.empleados->getNumHombres());;
+                std::string numMujeres = "\t\t\t\tNúmero de Mujeres "+ std::to_string(auxSucusal.empleados->getNumMujeres());
+
+                vista.Imprimir(nombreSucursal);
+                vista.Imprimir(nombreSucursalG);
+                vista.Imprimir(numHombre);
+                vista.Imprimir(numMujeres);
+            }
+        }
+    }
+}

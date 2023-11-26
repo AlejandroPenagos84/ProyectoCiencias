@@ -59,13 +59,18 @@ MultilistaEmpleados::MultilistaEmpleados(int max) {
     CEdad[3] = {"46 a 60", -1};
     CEdad[4] = {"Mas de 60", -1};
 
-    //Inicializar Sentinelas
+    //Inicializar Variable contadora
+
+    numHombres = 0;
+    numMujeres = 0;
 
     // Inicializar Arboles
     arbolActividad = new RBTree<std::string, int>();
     arbolCiudadNacimiento = new RBTree<std::string, int>();
     arbolBarrio = new RBTree<std::string, int>();
     arbolSucursales = new RBTree<std::string, int>();
+
+
 }
 
 /**
@@ -216,4 +221,12 @@ Empleado MultilistaEmpleados::getEmpleado(int indiceArray) {
 Cabecera<std::string>* MultilistaEmpleados::getArreglosRangoHijos()
 {
     return CNumeroHijos;
+}
+
+int MultilistaEmpleados::getNumHombres(){
+    return numHombres;
+}
+
+int MultilistaEmpleados::getNumMujeres() {
+    return numMujeres;
 }

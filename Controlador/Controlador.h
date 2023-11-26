@@ -19,7 +19,7 @@ public:
     void MostrarMenu();
     void PrimeraConsulta();
     void SegundaConsulta();
-    //void CuartaConsulta();
+    void QuintaConsulta();
 
 };
 
