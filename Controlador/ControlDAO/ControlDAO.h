@@ -12,11 +12,6 @@ private:
     Controlador* control;
 
     // Con los arboles buscaré los indices segun la llave primaria
-    RBTree<int,int>* paisesLlaveP;
-    RBTree<int,int>* ciudadesLlaveP;
-    RBTree<int,int>* sucursalesLlaveP;
-    RBTree<int,int>* empleadosLlaveP;
-    RBTree<int,int>* hijosLlaveP;//ESTE CREO QUE NO ES NECESARIO
 
     //Arboles con llaves secundarias y los datos completos
     RBTree<int,Hijo>* hijosLlaveF;
@@ -38,15 +33,6 @@ public:
     void LeerCiudadesDAO(const std::string &filename);
     void LeerPaisesDAO(const std::string &filename);
 
-    RBTree<int, int> *getPaisesLlaveP() const;
-
-    RBTree<int, int> *getCiudadesLlaveP() const;
-
-    RBTree<int, int> *getSucursalesLlaveP() const;
-
-    RBTree<int, int> *getEmpleadosLlaveP() const;
-
-    RBTree<int, int> *getHijosLlaveP() const;
 
     RBTree<int, Hijo> *getHijosLlaveF() const;
 

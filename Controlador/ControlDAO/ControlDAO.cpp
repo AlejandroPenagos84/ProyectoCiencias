@@ -1,12 +1,6 @@
 #include "ControlDAO.h"
 
 ControlDAO::ControlDAO(Controlador *ctrl) : control(ctrl) {
-    paisesLlaveP = new RBTree<int,int>;
-    ciudadesLlaveP = new RBTree<int,int>;
-    sucursalesLlaveP = new RBTree<int,int>;
-    empleadosLlaveP = new RBTree<int,int>;
-    hijosLlaveP = new RBTree<int,int>;//ESTE CREO QUE NO ES NECESARIO
-
     //Arboles con llaves secundarias y los datos completos
     hijosLlaveF = new RBTree<int,Hijo>;
     empleadosLlaveF = new RBTree<int,Empleado>;
@@ -57,8 +51,7 @@ void ControlDAO::LeerHijosDAO(const std::string &filename){
                 row.estado = intToBool(std::stoi(columns[4]));
 
                 // Add the row to the data vector
-                hijosLlaveF->Insert(hijosLlaveF,hijosLlaveF->createNodo(row.fk,row));
-                hijosLlaveP->Insert(hijosLlaveP,hijosLlaveP->createNodo(row.pk,pos));
+                hijosLlaveF->Insert(hijosLlaveF,hijosLlaveF->createNodo(row.pk,row));
                 pos++;
             } catch (const std::invalid_argument &e) {
                 std::cerr << "Error converting column values to integers: " << e.what() << std::endl;
@@ -122,8 +115,7 @@ void ControlDAO::LeerEmpleadosDAO(const std::string &filename){
 
 
                 // Add the row to the data vector
-                empleadosLlaveF->Insert(empleadosLlaveF,empleadosLlaveF->createNodo(row.fk,row));
-                empleadosLlaveP->Insert(empleadosLlaveP,empleadosLlaveP->createNodo(row.pk,pos));
+                empleadosLlaveF->Insert(empleadosLlaveF,empleadosLlaveF->createNodo(row.pk,row));
                 pos++;
             } catch (const std::invalid_argument &e) {
                 std::cerr << "Error converting column values to integers: " << e.what() << std::endl;
@@ -175,8 +167,7 @@ void ControlDAO::LeerSucursalesDAO(const std::string &filename)
                 row.estado = intToBool(std::stoi(columns[6]));
 
                 // Add the row to the data vector
-                sucurcalesLlaveF->Insert(sucurcalesLlaveF,sucurcalesLlaveF->createNodo(row.fk,row));
-                sucursalesLlaveP->Insert(sucursalesLlaveP,sucursalesLlaveP->createNodo(row.pk,pos));
+                sucurcalesLlaveF->Insert(sucurcalesLlaveF,sucurcalesLlaveF->createNodo(row.pk,row));
                 pos++;
             } catch (const std::invalid_argument &e) {
                 std::cerr << "Error converting column values to integers: " << e.what() << std::endl;
@@ -222,8 +213,7 @@ void ControlDAO::LeerCiudadesDAO(const std::string &filename)
                 row.estado = intToBool(std::stoi(columns[3]));
 
                 // Add the row to the data vector
-                ciudadesLlaveF->Insert(ciudadesLlaveF,ciudadesLlaveF->createNodo(row.fk,row));
-                ciudadesLlaveP->Insert(ciudadesLlaveP,ciudadesLlaveP->createNodo(row.pk,pos));
+                ciudadesLlaveF->Insert(ciudadesLlaveF,ciudadesLlaveF->createNodo(row.pk,row));
                 pos++;
             } catch (const std::invalid_argument &e) {
                 std::cerr << "Error converting column values to integers: " << e.what() << std::endl;
@@ -269,7 +259,6 @@ void ControlDAO::LeerPaisesDAO(const std::string &filename)
                 row.estado = intToBool(std::stoi(columns[2]));
 
                 // Add the row to the data vector
-                paisesLlaveP->Insert(sucursalesLlaveP,sucursalesLlaveP->createNodo(row.pk,pos));
                 paises->Insert(paises,paises->createNodo(row.pk,row));
                 pos++;
             } catch (const std::invalid_argument &e) {
@@ -280,26 +269,6 @@ void ControlDAO::LeerPaisesDAO(const std::string &filename)
     // Close the file
     file.close();
     //return data;
-}
-
-RBTree<int, int> *ControlDAO::getPaisesLlaveP() const {
-    return paisesLlaveP;
-}
-
-RBTree<int, int> *ControlDAO::getCiudadesLlaveP() const {
-    return ciudadesLlaveP;
-}
-
-RBTree<int, int> *ControlDAO::getSucursalesLlaveP() const {
-    return sucursalesLlaveP;
-}
-
-RBTree<int, int> *ControlDAO::getEmpleadosLlaveP() const {
-    return empleadosLlaveP;
-}
-
-RBTree<int, int> *ControlDAO::getHijosLlaveP() const {
-    return hijosLlaveP;
 }
 
 RBTree<int, Hijo> *ControlDAO::getHijosLlaveF() const {

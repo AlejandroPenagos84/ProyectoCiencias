@@ -22,8 +22,6 @@ void MultilistaPaises::AgregarPais(Pais pais) {
      */
 
     // Crear una nueva multilista de ciudades para el país
-    pais.ciudades = new MultilistaCiudad(32);
-
 
     paises[posLibre] = pais;
 

@@ -75,7 +75,6 @@ MultilistaEmpleados::MultilistaEmpleados(int max) {
  */
 void MultilistaEmpleados::AgregarEmpleado(Empleado empleado)
 {
-    empleado.hijos = new MultilistaHijo(empleado.numHijos);
     empleados[posLibre] = std::move(empleado);
 
     //Organizar Por Sexo

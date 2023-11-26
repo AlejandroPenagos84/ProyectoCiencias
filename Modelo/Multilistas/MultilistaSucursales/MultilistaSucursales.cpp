@@ -15,9 +15,6 @@ void MultilistaSucursales::AgregarSucursal(Sucursal sucursal) {
      */
 
 
-    // Crear una nueva multilista de empleados para la sucursal
-    sucursal.empleados = new MultilistaEmpleados(40);
-
     // Agregar la sucursal al arreglo
     sucursales[posLibre] = sucursal;
 

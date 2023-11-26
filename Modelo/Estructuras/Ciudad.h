@@ -15,10 +15,9 @@ struct Ciudad
     bool estado;
     MultilistaSucursales* sucursales;
 
-    Ciudad() : nombre(""), estado(true), sucursales(nullptr) {}
-
-    Ciudad(std::string& nombre)
-        : nombre(nombre), estado(true) {}
-
+    Ciudad()
+    {
+        sucursales = new MultilistaSucursales(20);
+    }
 };
 #endif //PROYECTO_CIENCIAS_CIUDAD_H

@@ -16,13 +16,11 @@ struct Sucursal {
     MultilistaEmpleados* empleados;
     //List<Empleado> empleados;
 
-    Sucursal() :nombre(""), direccion(""), barrio(""), nombreGerente(""), estado(true), empleados(nullptr) {}
+    Sucursal()
+    {
+        empleados = new MultilistaEmpleados(40);
+    }
 
-    Sucursal(std::string& nombre,
-             std::string& direccion,
-             std::string& barrio,
-             std::string& nombreGerente)
-        :nombre(nombre), direccion(direccion), barrio(barrio), nombreGerente(nombreGerente), estado(true) {}
 };
 
 #endif

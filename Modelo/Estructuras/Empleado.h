@@ -43,27 +43,10 @@ struct Empleado {
     int sigBarrio{-1};
     int sigNumHijos{-1};
 
-    Empleado() : nombre(""),
-                 apellido(""),
-                 tipoIdentificacion(""),
-                 numIdentificacion(""),
-                 sexo('\0'),
-                 telefonoCelular(""),
-                 telefonoFijo(""),
-                 email(""),
-                 ciudadNacimiento(""),
-                 paisNacimiento(""),
-                 ciudadResidencia(""),
-                 direccion(""),
-                 tieneHijos('\0'),
-                 actividadLaboral(""),
-                 sucursalTrabajo(""),
-                 barrio(""),
-                 numHijos(0),
-                 fechaNacimiento(""),
-                 estado(true),
-                 edad(0) ,
-                 hijos(nullptr){}
+    Empleado()
+     {
+                    hijos = new MultilistaHijo(5);
+     }
 
     // Constructor para inicializar los datos de un empleado
     Empleado(std::string nombre,
@@ -103,7 +86,7 @@ struct Empleado {
           numHijos(numHijos),
           fechaNacimiento(std::move(fechaNacimiento)),
           estado(true){
-
+        hijos = new MultilistaHijo(5);
         edad = calcularEdad(obtenerFechaDesdeString(fechaNacimiento));
     }
 };

@@ -11,8 +11,8 @@ struct Pais
 
     MultilistaCiudad* ciudades;
 
-    Pais() : nombre(""), estado(true), ciudades(nullptr) {}
-
-    Pais(std::string& nombre): nombre(nombre), estado(true) {}
+    Pais() {
+        ciudades = new MultilistaCiudad(20);
+    }
 };
 #endif //PROYECTO_CIENCIAS_PAIS_H

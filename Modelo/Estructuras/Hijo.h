@@ -14,10 +14,8 @@ struct Hijo
 
     int sigEdad{-1};
 
-    Hijo():nombre(), fechaNacimiento("21/05/2005"){}
 
-    Hijo(std::string nombre, std::string fechaNacimiento)
-        : nombre(std::move(nombre)), fechaNacimiento(std::move(fechaNacimiento))
+    Hijo()
     {
         // Supongo que calcularEdad y obtenerFechaDesdeString están definidas
         edad = calcularEdad(obtenerFechaDesdeString(fechaNacimiento));

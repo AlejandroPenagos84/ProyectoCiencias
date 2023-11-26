@@ -20,9 +20,6 @@ void MultilistaCiudad::AgregarCiudad(Ciudad ciudad) {
      */
 
 
-    // Crear una nueva multilista de sucursales para la ciudad
-    ciudad.sucursales = new MultilistaSucursales(20);
-
     // Agregar Ciudad
 
     ciudades[posLibre] = ciudad;

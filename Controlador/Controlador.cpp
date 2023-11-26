@@ -11,11 +11,69 @@ Controlador::Controlador() {
     controlDao->LeerCiudadesDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\ciudades.csv)");
     controlDao->LeerPaisesDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\paises.csv)");
 
+    RBTree<int,Empleado>* arbolEmpleados = controlDao->getEmpleadosLlaveF();
+    RBTree<int,Sucursal>* arbolSucursales = controlDao->getSucurcalesLlaveF();
+    RBTree<int,Ciudad>* arbolCiudades = controlDao->getCiudadesLlaveF();
+    RBTree<int,Pais>* arbolPaises = controlDao->getPaises();
+
     //Cola Con la Clave de los hijos
     Queue<Nodo<int,Hijo>*> colaHijosF = controlDao->getHijosLlaveF()->inorden();
 
     //Cola con la clave empleados
-    Queue<Nodo<int,int>*> colaEmpleadosP = controlDao->getEmpleadosLlaveP()->inorden();
+    Queue<Nodo<int,Empleado>*> colaEmpleadosF = controlDao->getEmpleadosLlaveF()->inorden();
+
+    //Cola Sucursales
+    Queue<Nodo<int,Sucursal>*> colaSucursalesF = controlDao->getSucurcalesLlaveF()->inorden();
+
+    //Cola Ciudad
+    Queue<Nodo<int,Ciudad>*> colaCiudadesF = controlDao->getCiudadesLlaveF()->inorden();
+
+    //Cola Paises
+    Queue<Nodo<int,Pais>*> colaPaisesF = controlDao->getPaises()->inorden();
+
+    while(!colaHijosF.IsEmpty())
+    {
+        if(arbolEmpleados->findNodo(colaHijosF.Front()->otroDato.fk) != nullptr)
+        {
+            // Busca el nodo con la llave foranea
+            // recordando que la llave foranea en uno es la primaria en otro
+
+            // Ya con el dato, le digo a la multilista de hijos de ese empleado que agregue
+            // el hijo que esta en la cola
+            arbolEmpleados->findNodo(colaHijosF.Front()->otroDato.fk)->otroDato.hijos->AgregarHijo(colaHijosF.Dequeue()->otroDato);
+        }
+    }
+
+    while(!colaEmpleadosF.IsEmpty()){
+        if(arbolSucursales->findNodo(colaEmpleadosF.Front()->otroDato.fk) != nullptr)
+        {
+            Empleado aux = colaEmpleadosF.Dequeue()->otroDato;
+            (arbolSucursales->findNodo(aux.fk))->otroDato.empleados->AgregarEmpleado(aux);
+        }
+    }
+
+
+    while(!colaSucursalesF.IsEmpty()){
+        if(arbolCiudades->findNodo(colaSucursalesF.Front()->otroDato.fk) != nullptr)
+        {
+            (arbolCiudades->findNodo(colaSucursalesF.Front()->otroDato.fk))->otroDato.sucursales->AgregarSucursal(colaSucursalesF.Dequeue()->otroDato);
+        }
+    }
+
+
+    while(!colaCiudadesF.IsEmpty()){
+        if(arbolPaises->findNodo(colaCiudadesF.Front()->otroDato.fk) != nullptr)
+        {
+            (arbolPaises->findNodo(colaCiudadesF.Front()->otroDato.fk))->otroDato.ciudades->AgregarCiudad(colaCiudadesF.Dequeue()->otroDato);
+        }
+    }
+
+    while (!colaPaisesF.IsEmpty())
+    {
+        multilistaPaises->AgregarPais(colaPaisesF.Dequeue()->otroDato);
+    }
+
+    vista.MostrarElementos(multilistaPaises->getPais(0).ciudades->getCiudad(0).sucursales->getElementos(),multilistaPaises->getPais(0).ciudades->getCiudad(0).sucursales->getSize());
 
     //Queue<Nodo<int,Pais>*> colaEmpleadoP = controlDao->getEmpleadosLlaveP();
 
