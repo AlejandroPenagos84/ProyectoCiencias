@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 {
     std::locale::global(std::locale(""));
 	Controlador controlador;
-    controlador.CuartaConsulta();
+    controlador.TeceraConsulta();
     //controlador.PrimeraConsulta();
 
 	return 0;

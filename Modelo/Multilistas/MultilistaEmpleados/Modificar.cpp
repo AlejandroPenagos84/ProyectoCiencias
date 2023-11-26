@@ -242,7 +242,6 @@ void MultilistaEmpleados::CambiarAtributo(
     // Si la cabecera está vacía, actualiza el índice de la cabecera y el atributo
     if (cabecera[indiceCabecera].indice == -1) {
         nuevoAtributoIndice--;
-        cabecera[indiceCabecera].atributo = "";
     }
 
     // Reorganiza el árbol después del cambio

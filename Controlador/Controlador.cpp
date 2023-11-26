@@ -77,7 +77,6 @@ Controlador::Controlador() {
 
 void Controlador::PrimeraConsulta() {
 
-
     int numPais = vista.MostrarElementos(multilistaPaises->getElementos(),
                                          multilistaPaises->getSize());
 
@@ -147,6 +146,7 @@ void Controlador::SegundaConsulta() {
     }
 }
 
+
 void Controlador::TeceraConsulta() {
 
     int numPais = vista.MostrarElementos(multilistaPaises->getElementos(),
@@ -159,20 +159,65 @@ void Controlador::TeceraConsulta() {
     int numCiudad = vista.MostrarElementos(auxPais.ciudades->getElementos(), auxPais.ciudades->getSize());
     Ciudad auxCiudad = auxPais.ciudades->getCiudad(numCiudad);
 
+
+    struct EstructuraAuxAL
+    {
+        std::string actividadLaboral;
+        std::string nombreEmpleado;
+        std::string apellidoEmpleado;
+    };
+
+    struct EstructuraAuxCiudadN{
+        std::string nombre; // Nombre de la ciudad
+        RBTree<int,EstructuraAuxAL>* arbolActividadLaboral = new RBTree<int,EstructuraAuxAL>; // Indice Arreglo grande / Nombre de la activida laboral
+    };
+
+
+
+    RBTree<int,EstructuraAuxCiudadN>* arbolCiudadNacimiento = new RBTree<int,EstructuraAuxCiudadN>;
+
     for (int i = 0; i < auxCiudad.sucursales->getSize(); i++) {
         Sucursal auxSucursal = auxCiudad.sucursales->getSucursal(i);
 
-        // Arboles
-        RBTree<int, int> *arbolCiudadNacimiento = new RBTree<int, int>;
-        RBTree<int, int> *arbolActividadLaboral = new RBTree<int, int>;
+        Cabecera<std::string>* pCabeceraCiudadNacimiento = auxSucursal.empleados->getCCiudadNacimiento();
 
-        for (int k = 0; k < auxSucursal.empleados->getNumEmpleados(); i++) {
+        int indiceCabera = 0;
+        while(pCabeceraCiudadNacimiento[indiceCabera].atributo == "" && pCabeceraCiudadNacimiento[indiceCabera].indice != -1){
+            int indice = pCabeceraCiudadNacimiento[indiceCabera].indice;
+            EstructuraAuxCiudadN auxiliarCN;
+            while(indice != -1) {
+                auxiliarCN.nombre = auxSucursal.empleados->getEmpleado(indice).ciudadNacimiento;
 
+                EstructuraAuxAL auxiliarAL;
+
+                auxiliarAL.actividadLaboral = auxSucursal.empleados->getEmpleado(indice).actividadLaboral;
+                auxiliarAL.nombreEmpleado = auxSucursal.empleados->getEmpleado(indice).nombre;
+                auxiliarAL.apellidoEmpleado = auxSucursal.empleados->getEmpleado(indice).apellido;
+
+                auxiliarCN.arbolActividadLaboral->Insert(auxiliarCN.arbolActividadLaboral,
+                                                       auxiliarCN.arbolActividadLaboral->createNodo(indice,auxiliarAL));
+
+                indice = auxSucursal.empleados->getEmpleado(indice).sigCiudadNacimiento;
+            }
+            arbolCiudadNacimiento->Insert(arbolCiudadNacimiento,arbolCiudadNacimiento->createNodo(indiceCabera,auxiliarCN));
+            indiceCabera++;
         }
-
     }
+    std::cout<<"HUDVRHJR"<<std::endl;
+    Queue<Nodo<int,EstructuraAuxCiudadN>*> ciudadesNacimiento = arbolCiudadNacimiento->inorden();
+    while (!ciudadesNacimiento.IsEmpty())
+    {
+        EstructuraAuxCiudadN auxCN = ciudadesNacimiento.Dequeue()->otroDato;
+        Queue<Nodo<int,EstructuraAuxAL>*> actividadLaboral = auxCN.arbolActividadLaboral->inorden();
 
-
+        while(!actividadLaboral.IsEmpty())
+        {
+            EstructuraAuxAL auxAl = actividadLaboral.Dequeue()->otroDato;
+            vista.Imprimir(auxCN.nombre + auxAl.actividadLaboral);
+            vista.Imprimir(auxAl.nombreEmpleado);
+            vista.Imprimir(auxAl.apellidoEmpleado);
+        }
+    }
 }
 
 
@@ -211,18 +256,17 @@ void Controlador::CuartaConsulta() {
 
     Queue<Nodo<int,EstructuAux>*> colaSucursales = arbolEstructuras->inorden();
 
-    while(!colaSucursales.IsEmpty() && colaSucursales.Front()->dato >= numRango)
+    while(!colaSucursales.IsEmpty())
     {
         EstructuAux auxDatos = colaSucursales.Dequeue()->otroDato;
-
-        vista.Imprimir("Nombre: " + auxDatos.nombre);
-        vista.Imprimir("Nombre Gerente: "+auxDatos.nombreGerente);
-        vista.Imprimir("Barrio: "+auxDatos.barrio);
-        vista.Imprimir("Numero empleados: "+ std::to_string(auxDatos.numEmpleados) +"\n\n");
-
+        if(auxDatos.numEmpleados >= numRango)
+        {
+            vista.Imprimir("Nombre: " + auxDatos.nombre);
+            vista.Imprimir("Nombre Gerente: "+auxDatos.nombreGerente);
+            vista.Imprimir("Barrio: "+auxDatos.barrio);
+            vista.Imprimir("Numero empleados: "+ std::to_string(auxDatos.numEmpleados) +"\n\n");
+        }
     }
-
-    delete arbolEstructuras, colaSucursales;
 }
 
 void Controlador::QuintaConsulta() {

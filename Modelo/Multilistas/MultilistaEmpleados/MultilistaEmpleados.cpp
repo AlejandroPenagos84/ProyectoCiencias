@@ -41,10 +41,13 @@ MultilistaEmpleados::MultilistaEmpleados(int max) {
     CSexo[1] = {'F', -1};
 
     //Cabecera para organizar los atributos que tengan string
-    CActividadLaboral[0] = {"", -1};
-    CCiudadNacimiento[0] = {"", -1};
-    CBarrio[0] = {"", -1};
-    CSucursal[0] = {"", -1};
+    for(int i = 0; i < max; i++)
+    {
+        CActividadLaboral[i] = {"", -1};
+        CCiudadNacimiento[i] = {"", -1};
+        CBarrio[i] = {"", -1};
+        CSucursal[i] = {"", -1};
+    }
 
     //Cabecera para organizar por numero de hijos
     CNumeroHijos[0] = {"Sin Hijos", -1};

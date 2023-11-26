@@ -35,8 +35,7 @@ void MultilistaHijo::AgregarHijo(Hijo hijo) {
     /**
      * @brief Agrega un hijo a la multilista.
      *
-     * @param nombre Nombre del hijo.
-     * @param fechaNacimiento Fecha de nacimiento del hijo.
+     * @param Hijo hijo
      */
 
 

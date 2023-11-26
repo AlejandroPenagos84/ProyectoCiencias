@@ -3,7 +3,6 @@
 #include "../Vista/Vista.h"
 #include "../MultilistaPaises/MultilistaPaises.h"
 #include "ControlDAO/ControlDAO.h"
-#include<vector>
 
 class ControlDAO;
 class Controlador
