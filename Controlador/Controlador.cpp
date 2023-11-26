@@ -160,34 +160,33 @@ void Controlador::TeceraConsulta() {
     Ciudad auxCiudad = auxPais.ciudades->getCiudad(numCiudad);
 
 
-    struct EstructuraAuxAL
-    {
+    struct EstructuraAuxAL {
         std::string actividadLaboral;
         std::string nombreEmpleado;
         std::string apellidoEmpleado;
     };
 
-    struct EstructuraAuxCiudadN{
+    struct EstructuraAuxCiudadN {
         std::string nombre; // Nombre de la ciudad
-        RBTree<int,EstructuraAuxAL>* arbolActividadLaboral = new RBTree<int,EstructuraAuxAL>; // Indice Arreglo grande / Nombre de la activida laboral
+        RBTree<std::string, EstructuraAuxAL> *arbolActividadLaboral = new RBTree<std::string, EstructuraAuxAL>; // Indice Arreglo grande / Nombre de la activida laboral
     };
 
 
-
-    RBTree<int,EstructuraAuxCiudadN>* arbolCiudadNacimiento = new RBTree<int,EstructuraAuxCiudadN>;
+    RBTree<std::string, EstructuraAuxCiudadN>* arbolCiudadNacimiento = new RBTree<std::string, EstructuraAuxCiudadN>;
 
     for (int i = 0; i < auxCiudad.sucursales->getSize(); i++) {
         Sucursal auxSucursal = auxCiudad.sucursales->getSucursal(i);
-
-        Cabecera<std::string>* pCabeceraCiudadNacimiento = auxSucursal.empleados->getCCiudadNacimiento();
-
+        Cabecera<std::string> *pCabeceraCiudadNacimiento = auxSucursal.empleados->getCCiudadNacimiento();
         int indiceCabera = 0;
-        while(pCabeceraCiudadNacimiento[indiceCabera].atributo == "" && pCabeceraCiudadNacimiento[indiceCabera].indice != -1){
+        while (pCabeceraCiudadNacimiento[indiceCabera].atributo != "" &&
+               pCabeceraCiudadNacimiento[indiceCabera].indice != -1)
+        {
+
             int indice = pCabeceraCiudadNacimiento[indiceCabera].indice;
             EstructuraAuxCiudadN auxiliarCN;
-            while(indice != -1) {
-                auxiliarCN.nombre = auxSucursal.empleados->getEmpleado(indice).ciudadNacimiento;
-
+            auxiliarCN.nombre = auxSucursal.empleados->getEmpleado(indice).ciudadNacimiento;
+            while (indice != -1)
+            {
                 EstructuraAuxAL auxiliarAL;
 
                 auxiliarAL.actividadLaboral = auxSucursal.empleados->getEmpleado(indice).actividadLaboral;
@@ -195,27 +194,28 @@ void Controlador::TeceraConsulta() {
                 auxiliarAL.apellidoEmpleado = auxSucursal.empleados->getEmpleado(indice).apellido;
 
                 auxiliarCN.arbolActividadLaboral->Insert(auxiliarCN.arbolActividadLaboral,
-                                                       auxiliarCN.arbolActividadLaboral->createNodo(indice,auxiliarAL));
+                                                         auxiliarCN.arbolActividadLaboral->createNodo(auxiliarAL.actividadLaboral,auxiliarAL));
 
                 indice = auxSucursal.empleados->getEmpleado(indice).sigCiudadNacimiento;
             }
-            arbolCiudadNacimiento->Insert(arbolCiudadNacimiento,arbolCiudadNacimiento->createNodo(indiceCabera,auxiliarCN));
+
+            arbolCiudadNacimiento->Insert(arbolCiudadNacimiento,
+                                          arbolCiudadNacimiento->createNodo(auxiliarCN.nombre, auxiliarCN));
             indiceCabera++;
         }
     }
-    std::cout<<"HUDVRHJR"<<std::endl;
-    Queue<Nodo<int,EstructuraAuxCiudadN>*> ciudadesNacimiento = arbolCiudadNacimiento->inorden();
-    while (!ciudadesNacimiento.IsEmpty())
-    {
-        EstructuraAuxCiudadN auxCN = ciudadesNacimiento.Dequeue()->otroDato;
-        Queue<Nodo<int,EstructuraAuxAL>*> actividadLaboral = auxCN.arbolActividadLaboral->inorden();
 
-        while(!actividadLaboral.IsEmpty())
-        {
+    int cont = 0;
+    Queue<Nodo<std::string, EstructuraAuxCiudadN> *> ciudadesNacimiento = arbolCiudadNacimiento->inorden();
+    while (!ciudadesNacimiento.IsEmpty()) {
+        EstructuraAuxCiudadN auxCN = ciudadesNacimiento.Dequeue()->otroDato;
+        Queue<Nodo<std::string, EstructuraAuxAL> *> actividadLaboral = auxCN.arbolActividadLaboral->inorden();
+
+        while (!actividadLaboral.IsEmpty()) {
             EstructuraAuxAL auxAl = actividadLaboral.Dequeue()->otroDato;
-            vista.Imprimir(auxCN.nombre + auxAl.actividadLaboral);
-            vista.Imprimir(auxAl.nombreEmpleado);
-            vista.Imprimir(auxAl.apellidoEmpleado);
+            vista.Imprimir(auxCN.nombre + "-" + auxAl.actividadLaboral);
+            vista.Imprimir("\t\t"+auxAl.nombreEmpleado + "-" + auxAl.apellidoEmpleado);
+
         }
     }
 }
