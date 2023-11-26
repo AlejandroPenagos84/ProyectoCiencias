@@ -271,6 +271,32 @@ void ControlDAO::LeerPaisesDAO(const std::string &filename)
     //return data;
 }
 
+// Function to write vector of CsvRow to a CSV file
+void ControlDAO::writeCsvFileHijo(const std::string& filename, const std::vector<Hijo>& data) {
+    // Open the file for writing
+    std::ofstream file(filename);
+
+    // Check if the file is open
+    if (!file.is_open()) {
+        std::cerr << "Error opening file for writing!" << std::endl;
+        return;
+    }
+
+    // Write data
+    for (const auto& row : data) {
+        file    << row.pk << ","
+                << row.fk << ","
+                << row.nombre << ","
+                << row.fechaNacimiento
+                << "\n";
+    }
+
+    // Close the file
+    file.close();
+
+    std::cout << "CSV file written successfully!" << std::endl;
+}
+
 RBTree<int, Hijo> *ControlDAO::getHijosLlaveF() const {
     return hijosLlaveF;
 }

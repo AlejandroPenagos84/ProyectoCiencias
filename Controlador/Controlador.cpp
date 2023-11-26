@@ -6,15 +6,15 @@ Controlador::Controlador() {
     multilistaPaises = new MultilistaPaises(18);
 
     controlDao->LeerHijosDAO(
-            R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\hijos.csv)");
+            R"(..\Archivos\hijos.csv)");
     controlDao->LeerEmpleadosDAO(
-            R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\empleados.csv)");
+            R"(..\Archivos\empleados.csv)");
     controlDao->LeerSucursalesDAO(
-            R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\sucursales.csv)");
+            R"(..\Archivos\sucursales.csv)");
     controlDao->LeerCiudadesDAO(
-            R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\ciudades.csv)");
+            R"(..\Archivos\ciudades.csv)");
     controlDao->LeerPaisesDAO(
-            R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\paises.csv)");
+            R"(..\Archivos\paises.csv)");
 
     RBTree<int, Empleado> *arbolEmpleados = controlDao->getEmpleadosLlaveF();
     RBTree<int, Sucursal> *arbolSucursales = controlDao->getSucurcalesLlaveF();
