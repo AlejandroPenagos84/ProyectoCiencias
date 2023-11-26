@@ -255,7 +255,7 @@ int MultilistaEmpleados::getCabeceraEdad(int indiceArray) {
  *
  * @return Número total de empleados en la multilista.
  */
-int MultilistaEmpleados::getNumEmpleados() const { return size; }
+int MultilistaEmpleados::getNumEmpleados(){ return size; }
 
 /**
  * @brief Obtiene el objeto Empleado en la posición indicada del arreglo.
@@ -265,4 +265,9 @@ int MultilistaEmpleados::getNumEmpleados() const { return size; }
  */
 Empleado MultilistaEmpleados::getEmpleado(int indiceArray) {
     return empleados[indiceArray];
+}
+
+Cabecera<std::string>* MultilistaEmpleados::getArreglosRangoHijos()
+{
+    return CNumeroHijos;
 }

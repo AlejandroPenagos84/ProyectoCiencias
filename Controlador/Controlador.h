@@ -3,6 +3,7 @@
 #include "../Vista/Vista.h"
 #include "../MultilistaPaises/MultilistaPaises.h"
 #include "ControlDAO/ControlDAO.h"
+#include "../Librerias/ColasPrioridad.h"
 
 class ControlDAO;
 class Controlador
@@ -15,6 +16,8 @@ public:
     Controlador();
     void MostrarMenu();
     void PrimeraConsulta();
+    void SegundaConsulta();
+    void CuartaConsulta();
 
 };
 

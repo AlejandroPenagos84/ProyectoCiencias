@@ -16,10 +16,11 @@ public:
     void MenuGlobal();
     void MenuConsultas();
     int MostrarElementos(std::string* arreglo, int tam);
-    void MenuPrimeraConsulta(std::string* arregloPaises,
-                             std::string* arregloCiudades,
-                             std::string* arregloSucursales);
+    int MenuMostrarRangosNumHijos();
+    void MenuPrimeraConsulta(int* arreglo);
 
+
+    static void Imprimir(std::string m);
 
 private:
 

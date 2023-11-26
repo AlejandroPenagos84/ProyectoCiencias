@@ -106,3 +106,30 @@ int  Vista::MostrarElementos(std::string* arreglo, int tam)
         }else continue;
     }
 }
+
+void Vista::MenuPrimeraConsulta(int* arreglo)
+{
+    std::cout<<"Sin hijos: "<<arreglo[0]<<std::endl;
+    std::cout<<"0 a 5: "<<arreglo[1]<<std::endl;
+    std::cout<<"6 a 10: "<<arreglo[2]<<std::endl;
+    std::cout<<"11 a 18: "<<arreglo[3]<<std::endl;
+    std::cout<<"Más de 18: "<<arreglo[4]<<std::endl;
+}
+
+int Vista::MenuMostrarRangosNumHijos()
+{
+    int opcion;
+    std::cout<<"1. Sin hijos: "<<std::endl;
+    std::cout<<"2. 1 a 2: "<<std::endl;
+    std::cout<<"3. 3 a 4: "<<std::endl;
+    std::cout<<"4. Más de 4 : "<<std::endl;
+
+    std::cout<<"Ingresa una opción: ";
+    std::cin>>opcion;
+    return opcion;
+}
+
+void Vista::Imprimir(std::string m)
+{
+    std::cout<<m<<std::endl;
+}

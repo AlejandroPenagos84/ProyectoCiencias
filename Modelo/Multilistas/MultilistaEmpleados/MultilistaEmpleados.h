@@ -127,7 +127,7 @@ public:
      *
      * @return Tamaño del arreglo de empleados.
      */
-    int getNumEmpleados() const;
+    int getNumEmpleados();
 
     /**
      * @brief Método para imprimir empleados según su género.
@@ -165,6 +165,8 @@ public:
      * @return Objeto Empleado correspondiente al índice.
      */
     Empleado getEmpleado(int indiceArray);
+
+    Cabecera<std::string>* getArreglosRangoHijos();
 
 private:
     // Métodos privados para organizar y cambiar atributos en la multilista
@@ -279,6 +281,8 @@ private:
      * @return Índice de la cabecera.
      */
     int getCabeceraEdad(int indiceArray);
+
+
 };
 
 #endif
