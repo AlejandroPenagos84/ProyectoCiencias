@@ -146,6 +146,12 @@ void MultilistaEmpleados::AgregarEmpleado(Empleado empleado)
  */
 void MultilistaEmpleados::Eliminar(int indiceArray) {
     empleados[indiceArray].estado = false;
+
+    if(empleados[indiceArray].sexo == 'M'){
+        numHombres--;
+    }else{
+        numMujeres--;
+    }
     size--;
 }
 
@@ -229,4 +235,12 @@ int MultilistaEmpleados::getNumHombres(){
 
 int MultilistaEmpleados::getNumMujeres() {
     return numMujeres;
+}
+
+Cabecera<std::string> *MultilistaEmpleados::getCActividadLaboral() const {
+    return CActividadLaboral;
+}
+
+Cabecera<std::string> *MultilistaEmpleados::getCCiudadNacimiento() const {
+    return CCiudadNacimiento;
 }

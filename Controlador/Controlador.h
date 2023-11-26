@@ -19,6 +19,8 @@ public:
     void MostrarMenu();
     void PrimeraConsulta();
     void SegundaConsulta();
+    void TeceraConsulta();
+    void CuartaConsulta();
     void QuintaConsulta();
 
 };

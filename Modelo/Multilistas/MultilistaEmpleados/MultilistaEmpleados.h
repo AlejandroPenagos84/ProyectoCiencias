@@ -143,6 +143,10 @@ public:
 
     Cabecera<std::string> *getArreglosRangoHijos();
 
+    Cabecera<std::string> *getCActividadLaboral() const;
+
+    Cabecera<std::string> *getCCiudadNacimiento() const;
+
 private:
     // Métodos privados para organizar y cambiar atributos en la multilista
 

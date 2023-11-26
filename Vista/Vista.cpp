@@ -143,3 +143,11 @@ void Vista::Imprimir(std::string m)
 {
     std::cout<<m<<std::endl;
 }
+
+int Vista::PedirElemento()
+{
+    int opcion;
+    std::cout<<"Elige el número: "<<std::endl;
+    std::cin>>opcion;
+    return opcion;
+}

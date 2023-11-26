@@ -147,20 +147,100 @@ void Controlador::SegundaConsulta() {
     }
 }
 
+void Controlador::TeceraConsulta() {
+
+    int numPais = vista.MostrarElementos(multilistaPaises->getElementos(),
+                                         multilistaPaises->getSize());
+
+    delete[] multilistaPaises->getElementos();
+
+    Pais auxPais = multilistaPaises->getPais(numPais);
+
+    int numCiudad = vista.MostrarElementos(auxPais.ciudades->getElementos(), auxPais.ciudades->getSize());
+    Ciudad auxCiudad = auxPais.ciudades->getCiudad(numCiudad);
+
+    for (int i = 0; i < auxCiudad.sucursales->getSize(); i++) {
+        Sucursal auxSucursal = auxCiudad.sucursales->getSucursal(i);
+
+        // Arboles
+        RBTree<int, int> *arbolCiudadNacimiento = new RBTree<int, int>;
+        RBTree<int, int> *arbolActividadLaboral = new RBTree<int, int>;
+
+        for (int k = 0; k < auxSucursal.empleados->getNumEmpleados(); i++) {
+
+        }
+
+    }
+
+
+}
+
+
+void Controlador::CuartaConsulta() {
+    int numRango = vista.PedirElemento();
+
+    struct EstructuAux {
+        int numEmpleados;
+        std::string nombre;
+        std::string nombreGerente;
+        std::string barrio;
+    };
+    // Numero de empleado, Indice
+    RBTree<int, EstructuAux> *arbolEstructuras = new RBTree<int, EstructuAux>;
+
+    for (int i = 0; i < multilistaPaises->getSize(); i++) {
+        Pais auxPais = multilistaPaises->getPais(i);
+
+        for (int j = 0; j < auxPais.ciudades->getSize(); j++) {
+            Ciudad auxCiudad = auxPais.ciudades->getCiudad(j);
+
+            for (int k = 0; k < auxCiudad.sucursales->getSize(); k++) {
+                Sucursal auxSucursal = auxCiudad.sucursales->getSucursal(k);
+
+                EstructuAux aux;
+                aux.numEmpleados = auxSucursal.empleados->getNumEmpleados();
+                aux.nombre = auxSucursal.nombre;
+                aux.barrio = auxSucursal.barrio;
+                aux.nombreGerente = auxSucursal.nombreGerente;
+
+
+                arbolEstructuras->Insert(arbolEstructuras,arbolEstructuras->createNodo(auxSucursal.empleados->getNumEmpleados(),aux));
+            }
+        }
+    }
+
+    Queue<Nodo<int,EstructuAux>*> colaSucursales = arbolEstructuras->inorden();
+
+    while(!colaSucursales.IsEmpty() && colaSucursales.Front()->dato >= numRango)
+    {
+        EstructuAux auxDatos = colaSucursales.Dequeue()->otroDato;
+
+        vista.Imprimir("Nombre: " + auxDatos.nombre);
+        vista.Imprimir("Nombre Gerente: "+auxDatos.nombreGerente);
+        vista.Imprimir("Barrio: "+auxDatos.barrio);
+        vista.Imprimir("Numero empleados: "+ std::to_string(auxDatos.numEmpleados) +"\n\n");
+
+    }
+
+    delete arbolEstructuras, colaSucursales;
+}
+
 void Controlador::QuintaConsulta() {
     for (int i = 0; i < multilistaPaises->getSize(); i++) {
         Pais auxPais = multilistaPaises->getPais(i);
-        vista.Imprimir("\t"+auxPais.nombre);
+        vista.Imprimir("\t" + auxPais.nombre);
         for (int j = 0; j < auxPais.ciudades->getSize(); j++) {
             Ciudad auxCiudad = auxPais.ciudades->getCiudad(j);
-            vista.Imprimir("\t\t"+auxCiudad.nombre);
+            vista.Imprimir("\t\t" + auxCiudad.nombre);
             for (int k = 0; k < auxCiudad.sucursales->getSize(); k++) {
                 Sucursal auxSucusal = auxCiudad.sucursales->getSucursal(k);
 
-                std::string nombreSucursal = "\t\t\tNombre Sucursal "+ auxSucusal.nombre;
-                std::string nombreSucursalG = "\t\t\tNombre Gerente "+ auxSucusal.nombreGerente;
-                std::string numHombre = "\t\t\t\tNúmero de Hombres "+std::to_string(auxSucusal.empleados->getNumHombres());;
-                std::string numMujeres = "\t\t\t\tNúmero de Mujeres "+ std::to_string(auxSucusal.empleados->getNumMujeres());
+                std::string nombreSucursal = "\t\t\tNombre Sucursal " + auxSucusal.nombre;
+                std::string nombreSucursalG = "\t\t\tNombre Gerente " + auxSucusal.nombreGerente;
+                std::string numHombre =
+                        "\t\t\t\tNúmero de Hombres " + std::to_string(auxSucusal.empleados->getNumHombres());;
+                std::string numMujeres =
+                        "\t\t\t\tNúmero de Mujeres " + std::to_string(auxSucusal.empleados->getNumMujeres());
 
                 vista.Imprimir(nombreSucursal);
                 vista.Imprimir(nombreSucursalG);

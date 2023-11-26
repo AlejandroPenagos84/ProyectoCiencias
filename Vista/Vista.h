@@ -18,6 +18,7 @@ public:
     int MostrarElementos(std::string* arreglo, int tam);
     int MenuMostrarRangosNumHijos();
     void MenuPrimeraConsulta(int* arreglo);
+    int PedirElemento();
 
 
     static void Imprimir(std::string m);
