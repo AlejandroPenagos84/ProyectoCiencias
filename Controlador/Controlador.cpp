@@ -75,6 +75,10 @@ Controlador::Controlador() {
 
 }
 
+void Controlador::MostrarMenu() {
+    vista.MenuGlobal();
+}
+
 void Controlador::PrimeraConsulta() {
 
     int numPais = vista.MostrarElementos(multilistaPaises->getElementos(),
@@ -115,11 +119,6 @@ void Controlador::PrimeraConsulta() {
     delete[] arregloValidaciones;
 }
 
-
-void Controlador::MostrarMenu() {
-    vista.MenuGlobal();
-}
-
 void Controlador::SegundaConsulta() {
     int auxNumRango = vista.MenuMostrarRangosNumHijos();
 
@@ -145,7 +144,6 @@ void Controlador::SegundaConsulta() {
         }
     }
 }
-
 
 void Controlador::TeceraConsulta() {
 
@@ -178,7 +176,7 @@ void Controlador::TeceraConsulta() {
         Sucursal auxSucursal = auxCiudad.sucursales->getSucursal(i);
         Cabecera<std::string> *pCabeceraCiudadNacimiento = auxSucursal.empleados->getCCiudadNacimiento();
         int indiceCabera = 0;
-        while (pCabeceraCiudadNacimiento[indiceCabera].atributo != "" &&
+        while (pCabeceraCiudadNacimiento[indiceCabera].atributo != "" ||
                pCabeceraCiudadNacimiento[indiceCabera].indice != -1)
         {
 
@@ -205,7 +203,6 @@ void Controlador::TeceraConsulta() {
         }
     }
 
-    int cont = 0;
     Queue<Nodo<std::string, EstructuraAuxCiudadN> *> ciudadesNacimiento = arbolCiudadNacimiento->inorden();
     while (!ciudadesNacimiento.IsEmpty()) {
         EstructuraAuxCiudadN auxCN = ciudadesNacimiento.Dequeue()->otroDato;
@@ -215,11 +212,11 @@ void Controlador::TeceraConsulta() {
             EstructuraAuxAL auxAl = actividadLaboral.Dequeue()->otroDato;
             vista.Imprimir(auxCN.nombre + "-" + auxAl.actividadLaboral);
             vista.Imprimir("\t\t"+auxAl.nombreEmpleado + "-" + auxAl.apellidoEmpleado);
-
         }
     }
-}
 
+    delete arbolCiudadNacimiento;
+}
 
 void Controlador::CuartaConsulta() {
     int numRango = vista.PedirElemento();
