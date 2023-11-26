@@ -121,28 +121,7 @@ void Controlador::PrimeraConsulta() {
 
 void Controlador::SegundaConsulta() {
     int auxNumRango = vista.MenuMostrarRangosNumHijos();
-
-    for (int i = 0; i < multilistaPaises->getSize(); i++) {
-        Pais auxPais = multilistaPaises->getPais(i);
-        vista.Imprimir(auxPais.nombre);
-
-        for (int j = 0; j < auxPais.ciudades->getSize(); j++) {
-            Ciudad auxCiudad = auxPais.ciudades->getCiudad(j);
-            vista.Imprimir(auxCiudad.nombre);
-
-            for (int k = 0; k < auxCiudad.sucursales->getSize(); k++) {
-                Sucursal auxSucusal = auxCiudad.sucursales->getSucursal(k);
-
-                int indiceC = auxSucusal.empleados->getArreglosRangoHijos()[auxNumRango].indice;
-
-                while (indiceC - 1) {
-                    vista.Imprimir((auxSucusal.empleados->getEmpleado(indiceC).nombre));
-                    vista.Imprimir((auxSucusal.empleados->getEmpleado(indiceC).apellido));
-                    indiceC = (auxSucusal.empleados->getEmpleado(indiceC).sigNumHijos);
-                }
-            }
-        }
-    }
+    
 }
 
 void Controlador::TeceraConsulta() {
@@ -215,7 +194,7 @@ void Controlador::TeceraConsulta() {
         }
     }
 
-    delete arbolCiudadNacimiento;
+    delete arbolCiudadNacimiento, ciudadesNacimiento;
 }
 
 void Controlador::CuartaConsulta() {
