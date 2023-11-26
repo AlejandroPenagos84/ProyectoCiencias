@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Alejandro Penagos/Desktop/ProyectoCiencias/ProyectoCiencias
+# Install script for directory: C:/Users/PROFESSIONAL/Desktop/ProyectoRepo/ProyectoCiencias
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Alejandro Penagos/Desktop/ProyectoCiencias/ProyectoCiencias/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/PROFESSIONAL/Desktop/ProyectoRepo/ProyectoCiencias/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
