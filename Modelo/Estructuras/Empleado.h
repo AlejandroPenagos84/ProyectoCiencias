@@ -5,8 +5,8 @@
 #include <string>
 
 struct Empleado {
-    //int pk;
-    //int fk;
+    int pk;
+    int fk;
 
     std::string nombre;
     std::string apellido;

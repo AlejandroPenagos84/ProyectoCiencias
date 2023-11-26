@@ -2,17 +2,55 @@
 #define CONTROLDAO_H
 #include "../Controlador.h"
 #include "fstream"
+#include <vector>
+
 
 class Controlador;
 
 class ControlDAO {
 private:
     Controlador* control;
-    size_t posLibre;
 
+    // Con los arboles buscaré los indices segun la llave primaria
+    RBTree<int,int>* paisesLlaveP;
+    RBTree<int,int>* ciudadesLlaveP;
+    RBTree<int,int>* sucursalesLlaveP;
+    RBTree<int,int>* empleadosLlaveP;
+    RBTree<int,int>* hijosLlaveP;//ESTE CREO QUE NO ES NECESARIO
+
+    //Arboles con llaves secundarias y los datos completos
+    RBTree<int,Hijo>* hijosLlaveF;
+    RBTree<int,Empleado>* empleadosLlaveF;
+    RBTree<int, Sucursal>* sucurcalesLlaveF;
+    RBTree<int,Ciudad>* ciudadesLlaveF;
+
+    int pos;
 public:
 
     explicit ControlDAO(Controlador* ctrl);
+    void LeerHijosDAO(const std::string &filename);
+    void LeerEmpleadosDAO(const std::string &filename);
+    void LeerSucursalesDAO(const std::string &filename);
+    void LeerCiudadesDAO(const std::string &filename);
+    void LeerPaisesDAO(const std::string &filename);
+
+    RBTree<int, int> *getPaisesLlaveP() const;
+
+    RBTree<int, int> *getCiudadesLlaveP() const;
+
+    RBTree<int, int> *getSucursalesLlaveP() const;
+
+    RBTree<int, int> *getEmpleadosLlaveP() const;
+
+    RBTree<int, int> *getHijosLlaveP() const;
+
+    RBTree<int, Hijo> *getHijosLlaveF() const;
+
+    RBTree<int, Empleado> *getEmpleadosLlaveF() const;
+
+    RBTree<int, Sucursal> *getSucurcalesLlaveF() const;
+
+    RBTree<int, Ciudad> *getCiudadesLlaveF() const;
 
     // Metodos Para el Archivo de Hijos
     void AgregarHijoDAO();
@@ -21,8 +59,6 @@ public:
 
     void ModificarHijoDAO();
 
-    void LeerHijosDAO();
-
     // Metodos Para el Archivo de Empleados
     void AgregarEmpleadoDAO();
 
@@ -30,7 +66,6 @@ public:
 
     void ModificarEmpleadoDAO();
 
-    void LeerEmpleadosDAO();
 
     //Metodos para el archivo de sucursales
     void AgregarSucursalDAO();
@@ -39,7 +74,6 @@ public:
 
     void ModificarSucursalDAO();
 
-    void LeerSucursalesDAO();
 
     // Metodo para el archivo de Ciudades
     void AgregarCiudadDAO();
@@ -48,7 +82,6 @@ public:
 
     void ModificarCiudadDAO();
 
-    void LeerCiudadesDAO();
 
     //Metodos para el archivo de Ciudades
     void AgregarPaisDAO();

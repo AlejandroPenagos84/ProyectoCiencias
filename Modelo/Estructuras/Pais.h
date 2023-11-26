@@ -5,7 +5,7 @@
 
 struct Pais
 {
-    //int pk;
+    int pk;
     std::string nombre;
     bool estado;
 

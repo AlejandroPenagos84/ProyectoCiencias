@@ -2,18 +2,24 @@
 
 Controlador::Controlador() {
     controlDao = new ControlDAO(this);
+    MultilistaHijo* hijos = new MultilistaHijo(5);
+    MultilistaEmpleados* empleados = new MultilistaEmpleados(3);
 
-    multilistaPaises = new MultilistaPaises(40);
+    controlDao->LeerHijosDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\hijos.csv)");
+    controlDao->LeerEmpleadosDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\empleados.csv)");
+    controlDao->LeerSucursalesDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\sucursales.csv)");
+    controlDao->LeerCiudadesDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\ciudades.csv)");
+    controlDao->LeerPaisesDAO(R"(C:\Users\Alejandro Penagos\Desktop\ProyectoCiencias\ProyectoCiencias\Archivos\paises.csv)");
 
-    multilistaPaises->AgregarPais("Colombia");
-    multilistaPaises->AgregarPais("Venezuela");
+    //Cola Con la Clave de los hijos
+    Queue<Nodo<int,Hijo>*> colaHijosF = controlDao->getHijosLlaveF()->inorden();
+
+    //Cola con la clave empleados
+    Queue<Nodo<int,Empleado>*> colaEmpleados = controlDao->getEmpleadosLlaveF()->inorden();
 
 
-    multilistaPaises->getPais(0).ciudades->AgregarCiudad("Caracas");
-    multilistaPaises->getPais(0).ciudades->AgregarCiudad("Bogota");
 
-
-    multilistaPaises->getPais(0).ciudades->getCiudad(0).sucursales;
+    std::cout<<hijos->getHijo(0).nombre;
 }
 
 

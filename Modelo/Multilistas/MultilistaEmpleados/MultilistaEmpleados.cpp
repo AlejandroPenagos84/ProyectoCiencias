@@ -130,6 +130,8 @@ void MultilistaEmpleados::AgregarEmpleado(
             numHijos,
             std::move(fechaNacimiento));
 
+    //std::cout<<numHijos<<std::endl;
+    std::cout<<"APELLIDO: "<<apellido<<std::endl;
     empleado.hijos = new MultilistaHijo(numHijos);
     empleados[posLibre] = std::move(empleado);
 
@@ -137,6 +139,7 @@ void MultilistaEmpleados::AgregarEmpleado(
     OrganizarSexo(posLibre);
 
     //Organizar Actividad Laboral
+
     Reorganizar(
             arbolActividad,
             CActividadLaboral,
@@ -146,6 +149,7 @@ void MultilistaEmpleados::AgregarEmpleado(
             posLibre);
 
     //Organizar por ciudad de nacimiento
+
     Reorganizar(arbolCiudadNacimiento,
                 CCiudadNacimiento,
                 &Empleado::ciudadNacimiento,

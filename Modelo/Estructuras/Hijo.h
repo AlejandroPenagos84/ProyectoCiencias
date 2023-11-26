@@ -5,14 +5,16 @@
 
 struct Hijo
 {
+    int pk{};
+    int fk;
     std::string nombre{};
-    std::string fechaNacimiento{};
+    std::string fechaNacimiento{"21/05/2005"};
     bool estado{true};
     int edad = calcularEdad(obtenerFechaDesdeString(fechaNacimiento));
 
     int sigEdad{-1};
 
-    Hijo():nombre(), fechaNacimiento(){}
+    Hijo():nombre(), fechaNacimiento("21/05/2005"){}
 
     Hijo(std::string nombre, std::string fechaNacimiento)
         : nombre(std::move(nombre)), fechaNacimiento(std::move(fechaNacimiento))

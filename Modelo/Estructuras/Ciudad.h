@@ -9,8 +9,8 @@
 
 struct Ciudad
 {
-    //int pk;
-    //int fk;
+    int pk;
+    int fk;
     std::string nombre;
     bool estado;
     MultilistaSucursales* sucursales;
