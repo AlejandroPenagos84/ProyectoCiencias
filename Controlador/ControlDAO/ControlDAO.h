@@ -47,7 +47,7 @@ public:
 
     void EliminarHijoDAO();
 
-    void ModificarHijoDAO();
+    void ModificarHijoDAO(const std::string& filename, const Hijo& updatedData);
 
     // Metodos Para el Archivo de Empleados
     void AgregarEmpleadoDAO();

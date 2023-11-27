@@ -45,7 +45,8 @@ struct Empleado {
 
     Empleado()
      {
-                    hijos = new MultilistaHijo(5);
+         hijos = new MultilistaHijo(5);
+         edad = calcularEdad(obtenerFechaDesdeString(fechaNacimiento));
      }
 
     // Constructor para inicializar los datos de un empleado

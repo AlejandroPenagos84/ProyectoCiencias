@@ -1,4 +1,8 @@
 #include "Controlador.h"
+bool intToBool(int value) {
+    // Convierte cualquier valor distinto de cero a true, y cero a false
+    return (value != 0);
+}
 
 Controlador::Controlador() {
     controlDao = new ControlDAO(this);
@@ -72,7 +76,17 @@ Controlador::Controlador() {
     while (!colaPaisesF.IsEmpty()) {
         multilistaPaises->AgregarPais(colaPaisesF.Dequeue()->otroDato);
     }
+/*
+    Hijo auxHijo;
 
+    auxHijo.pk = 1;
+    auxHijo.fk = 1;
+    auxHijo.nombre = "Carlos";
+    auxHijo.fechaNacimiento = "26/09/2010";
+    auxHijo.estado = intToBool(1);
+
+    controlDao->ModificarHijoDAO(R"(..\Archivos\hijos.csv)",auxHijo);
+    */
 }
 
 void Controlador::MostrarMenu() {

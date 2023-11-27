@@ -271,32 +271,6 @@ void ControlDAO::LeerPaisesDAO(const std::string &filename)
     //return data;
 }
 
-// Function to write vector of CsvRow to a CSV file
-void ControlDAO::writeCsvFileHijo(const std::string& filename, const std::vector<Hijo>& data) {
-    // Open the file for writing
-    std::ofstream file(filename);
-
-    // Check if the file is open
-    if (!file.is_open()) {
-        std::cerr << "Error opening file for writing!" << std::endl;
-        return;
-    }
-
-    // Write data
-    for (const auto& row : data) {
-        file    << row.pk << ","
-                << row.fk << ","
-                << row.nombre << ","
-                << row.fechaNacimiento
-                << "\n";
-    }
-
-    // Close the file
-    file.close();
-
-    std::cout << "CSV file written successfully!" << std::endl;
-}
-
 RBTree<int, Hijo> *ControlDAO::getHijosLlaveF() const {
     return hijosLlaveF;
 }
@@ -316,5 +290,70 @@ RBTree<int, Ciudad> *ControlDAO::getCiudadesLlaveF() const {
 RBTree<int, Pais> *ControlDAO::getPaises() const {
     return paises;
 }
+/*
+void ControlDAO::ModificarHijoDAO(const std::string &filename, const Hijo &updatedData) {
+    // Abrir el archivo CSV existente para lectura y escritura
+    std::ifstream inputFile(filename);
+    if (!inputFile.is_open()) {
+        std::cerr << "Error opening file for reading!" << std::endl;
+        return;
+    }
+
+    std::vector<std::string> lines;
+    std::string line;
+
+    // Leer todas las líneas del archivo CSV
+    while (std::getline(inputFile, line)) {
+        lines.push_back(line);
+    }
+
+    // Cerrar el archivo de entrada
+    inputFile.close();
+
+    // Buscar y modificar la fila que coincide con la clave primaria
+    bool found = false;
+    for (std::string& row : lines) {
+        std::istringstream iss(row);
+        std::vector<std::string> columns;
+
+        while (getline(iss, line, ',')) {
+            columns.push_back(line);
+        }
+
+        // Convertir la primera columna a entero para comparar con la clave primaria
+        int pk = std::stoi(columns[0]);
+
+        if (pk == updatedData.pk) {
+            // Actualizar los valores de la fila encontrada
+            std::ostringstream oss;
+            oss << updatedData.pk << ","
+                << updatedData.fk << ","
+                << updatedData.nombre << ","
+                << updatedData.fechaNacimiento;
+            row = oss.str();
+            found = true;
+            break;
+        }
+    }
+
+    // Si no se encontró la clave primaria, imprimir un mensaje y salir
+    if (!found) {
+        std::cerr << "Primary key not found!" << std::endl;
+        return;
+    }
+
+    // Abrir el archivo CSV para escritura
+    std::ofstream outputFile(filename);
+
+    // Escribir todas las líneas (modificadas y no modificadas) en el archivo
+    for (const std::string& row : lines) {
+        outputFile << row << "\n";
+    }
+
+    // Cerrar el archivo de salida
+    outputFile.close();
+
+    std::cout << "CSV file updated successfully!" << std::endl;
+}*/
 
 
